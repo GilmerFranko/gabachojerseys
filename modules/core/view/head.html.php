@@ -16,8 +16,7 @@
 <html lang="es" style="overflow-x: hidden">
 
 <head>
-	<?php if ($sModule != 'admin' and $sModule != 'mod')
-	{ ?>
+	<?php if ($sModule != 'admin' and $sModule != 'mod') { ?>
 		<!-- Google tag (gtag.js) -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-DGY33MBNWW"></script>
 		<script>
@@ -33,24 +32,28 @@
 	<?php } ?>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
+	<meta name="viewport"
+		content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<meta name="description" content="Tienda online de bordados. En nuestra tienda puedes encontrar una gran variedad de sweters bordados de alta calidad, con diseños exclusivos y materiales de primera clase. Envíos nacional a todo Mexico.">
+	<meta name="description"
+		content="Tienda online de bordados. En nuestra tienda puedes encontrar una gran variedad de sweters bordados de alta calidad, con diseños exclusivos y materiales de primera clase. Envíos nacional a todo Mexico.">
 
 	<!-- Carga JS dependiendo del modulo -->
 	<?php if ($sModule == 'admin'): ?>
 		<!--<link rel="stylesheet" href="<?php echo $config['base_url']; ?>/static/dist/css/admin.css">-->
 		<link rel="stylesheet" href="<?php echo $config['base_url']; ?>/static/css/materialize.min.css">
-		<link rel="stylesheet" href="<?php echo $config['base_url']; ?>/static/css/materialize-icons.css" onload="this.media='all'">
+		<link rel="stylesheet" href="<?php echo $config['base_url']; ?>/static/css/materialize-icons.css"
+			onload="this.media='all'">
 		<link rel="stylesheet" href="<?php echo $config['base_url']; ?>/static/css/admin.css">
 		<script src="<?php echo $config['base_url']; ?>/static/js/materialize.min.js"></script>
 		<script src="<?php echo $config['base_url']; ?>/static/js/custom.js"></script>
 		<script src="<?php echo $config['base_url']; ?>/static/js/admin.js"></script>
 	<?php else: ?>
-        <?php echo Core::vite('public', $config['base_url']); ?>
-		
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" onload="this.media='all'">
-    <?php endif; ?>
+		<?php echo Core::vite('public', $config['base_url']); ?>
+
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+			onload="this.media='all'">
+	<?php endif; ?>
 
 	<script defer type="text/javascript" src="<?php echo $config['base_url']; ?>/static/js/toastify.js"></script>
 	<!-- Import toastify.css -->
@@ -58,12 +61,11 @@
 
 
 	<!-- Titulo -->
-	<title><?php echo isset($page['name']) ? $page['name'] : ucfirst($sModule) . ' - ' . $config['script_name']; ?></title>
+	<title><?php echo isset($page['name']) ? $page['name'] : ucfirst($sModule) . ' - ' . $config['script_name']; ?>
+	</title>
 
 	<!--Import Google Icon Font-->
 
-	<!-- Importa estilos generales -->
-	<link type="text/css" rel="stylesheet" href="<?php echo $config['base_url']; ?>/static/css/custom.css" />
 	<!-- Importa estilos solo para modulo admin -->
 
 
@@ -106,8 +108,7 @@
 		};
 	</script>
 
-	<?php if ($session->platform == 'android' || $session->platform == 'app')
-	{ ?>
+	<?php if ($session->platform == 'android' || $session->platform == 'app') { ?>
 
 		<style>
 			nav a.left,
@@ -121,15 +122,16 @@
 
 	<?php } ?>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+		integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
 
 	<?php
-	if ($session->is_member and $sModule == 'admin')
-	{
+	if ($session->is_member and $sModule == 'admin') {
 		require Core::view('sidenav', 'core');
 	}
 	?>
@@ -151,9 +153,9 @@
 	</div>
 
 	<script>
-		$(document).ready(function() {
+		$(document).ready(function () {
 			// Escucha el evento de clic en las imágenes con el atributo data-bs-toggle="modal"
-			$('img[data-bs-toggle="modal"]').on('click', function() {
+			$('img[data-bs-toggle="modal"]').on('click', function () {
 				// Obtiene el src de la imagen que fue clickeada
 				var imageSrc = $(this).attr('src');
 
