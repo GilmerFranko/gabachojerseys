@@ -2,6 +2,7 @@
 node_modules/
 .vite/
 npm-debug.log*
+static/dist/
 
 # --- Archivos de desarrollo ---
 error.log
