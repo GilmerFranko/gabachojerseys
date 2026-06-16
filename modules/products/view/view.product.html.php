@@ -24,21 +24,23 @@ require Core::view('head', 'core');
       </div>
       <div class="row g-3 mb-5">
         <?php foreach ($variants as $v): ?>
-          <?php
-          if ($variant_selected == null)
-          {
-            $variant_selected = $variants[0]['id'];
-          }
-          $is_selected = ($variant_selected == $v['id']) ? 'variant_selected' : '';
-          ?>
-          <div class="" onclick="window.location.href='<?= gLink('products/view.product', ['product_id' => $product_id, 'variant_selected' => $v['id']]) ?>'" style="width: 175px;">
-            <div id="color-<?= $v['id'] ?>" class="color-option <?= $is_selected ?>">
-              <div class="product-image1">
-                <img src="<?= $config['products_url'] . '/' . $v['image'] ?>" alt="<?= $v['color_name'] ?>" class="img-fluid" width="300">
+            <?php
+            if ($variant_selected == null) {
+              $variant_selected = $variants[0]['id'];
+            }
+            $is_selected = ($variant_selected == $v['id']) ? 'variant_selected' : '';
+            ?>
+            <div class=""
+              onclick="window.location.href='<?= gLink('products/view.product', ['product_id' => $product_id, 'variant_selected' => $v['id']]) ?>'"
+              style="width: 175px;">
+              <div id="color-<?= $v['id'] ?>" class="color-option <?= $is_selected ?>">
+                <div class="product-image1">
+                  <img src="<?= $config['products_url'] . '/' . $v['image'] ?>" alt="<?= $v['color_name'] ?>"
+                    class="img-fluid" width="300">
+                </div>
+                <p class="text-center mt-2 fw-semibold"><?= $v['color_name'] ?></p>
               </div>
-              <p class="text-center mt-2 fw-semibold"><?= $v['color_name'] ?></p>
             </div>
-          </div>
         <?php endforeach; ?>
       </div>
 
@@ -48,89 +50,90 @@ require Core::view('head', 'core');
         <h2 class="fw-bold">INDICA LA TALLA DE LA SUDADERA 1</h2>
       </div>
       <?php foreach ($variants as $v): ?>
-        <?php if ($v['id'] == $variant_selected): ?>
-          <div class="size-selection mb-4">
-            <div class="row align-items-center">
-              <div class="col-auto">
-                <div class="hoodie-preview">
-                  <img src="<?= $config['products_url'] . '/' . $v['images']['data'][0]['image_url'] ?>" alt="Sudadera 1" class="img-fluid">
-                </div>
-              </div>
-              <div class="col talla">
-                <div class="d-flex align-items-center gap-3">
-                  <span class="fs-4 fw-bold">Talla:</span>
-                  <div style="display: flex;gap: 6px;flex-wrap: wrap;">
-                    <?php
-                    $sizes = explode(',', $v['size_available']);
-                    foreach ($sizes as $size)
-                    {
-                    ?>
-                      <button class="btn-size active sweater-1"><?= $size ?></button>
-                    <?php
-                    }
-                    ?>
+          <?php if ($v['id'] == $variant_selected): ?>
+              <div class="size-selection mb-4">
+                <div class="row align-items-center">
+                  <div class="col-auto">
+                    <div class="hoodie-preview">
+                      <img src="<?= $config['products_url'] . '/' . $v['images']['data'][0]['image_url'] ?>" alt="Sudadera 1"
+                        class="img-fluid">
+                    </div>
+                  </div>
+                  <div class="col talla">
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="fs-4 fw-bold">Talla:</span>
+                      <div style="display: flex;gap: 6px;flex-wrap: wrap;">
+                        <?php
+                        $sizes = explode(',', $v['size_available']);
+                        foreach ($sizes as $size) {
+                          ?>
+                            <button class="btn-size active sweater-1"><?= $size ?></button>
+                            <?php
+                        }
+                        ?>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        <?php endif; ?>
+          <?php endif; ?>
       <?php endforeach; ?>
       <?php foreach ($variants as $v): ?>
-        <?php if ($v['id'] == $variant_selected): ?>
-          <?php
-          $exist_size_2 = isset($v['images']['data'][1]['image_url']);
-          // Si la variante no tiene una segunda sudadera, no mostrar esta sección
-          if (!$exist_size_2)
-          {
-            break;
-          }
-          ?>
-          <hr class="my-4">
+          <?php if ($v['id'] == $variant_selected): ?>
+              <?php
+              $exist_size_2 = isset($v['images']['data'][1]['image_url']);
+              // Si la variante no tiene una segunda sudadera, no mostrar esta sección
+              if (!$exist_size_2) {
+                break;
+              }
+              ?>
+              <hr class="my-4">
 
-          <!-- Size Selection Section 2 -->
-          <div class="section-title mb-3">
-            <h2 class="fw-bold">INDICA LA TALLA DE LA SUDADERA 2</h2>
-          </div>
-
-          <div class="size-selection mb-4">
-            <div class="row align-items-center">
-              <div class="col-auto">
-                <div class="hoodie-preview">
-                  <img src="<?= $config['products_url'] . '/' . $v['images']['data'][1]['image_url'] ?>" alt="Sudadera 2" class="img-fluid">
-                </div>
+              <!-- Size Selection Section 2 -->
+              <div class="section-title mb-3">
+                <h2 class="fw-bold">INDICA LA TALLA DE LA SUDADERA 2</h2>
               </div>
-              <div class="col talla">
-                <div class="d-flex align-items-center gap-3">
-                  <span class="fs-4 fw-bold">Talla:</span>
-                  <div style="display: flex;gap: 6px;flex-wrap: wrap;">
-                    <?php
-                    $sizes = explode(',', $v['size_available']);
-                    foreach ($sizes as $size)
-                    {
-                    ?>
-                      <button class="btn-size active sweater-2"><?= $size ?></button>
-                    <?php
-                    }
-                    ?>
+
+              <div class="size-selection mb-4">
+                <div class="row align-items-center">
+                  <div class="col-auto">
+                    <div class="hoodie-preview">
+                      <img src="<?= $config['products_url'] . '/' . $v['images']['data'][1]['image_url'] ?>" alt="Sudadera 2"
+                        class="img-fluid">
+                    </div>
+                  </div>
+                  <div class="col talla">
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="fs-4 fw-bold">Talla:</span>
+                      <div style="display: flex;gap: 6px;flex-wrap: wrap;">
+                        <?php
+                        $sizes = explode(',', $v['size_available']);
+                        foreach ($sizes as $size) {
+                          ?>
+                            <button class="btn-size active sweater-2"><?= $size ?></button>
+                            <?php
+                        }
+                        ?>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        <?php endif; ?>
+          <?php endif; ?>
       <?php endforeach; ?>
       <!-- Alert Banner -->
       <div class="alert-banner mb-3 active">
         <!--<span class="alert-icon">🚨</span>
         <span class="alert-text">¡¡Alerta!! ¡ÚLTIMAS PIEZAS DISPONIBLES!</span>
         <span class="alert-icon">✓</span>-->
-        <img src="<?= $config['images_url'] . '/alerta-ultimas-piezas-disponibles.png' ?>" alt="Ultimas piezas disponibles">
+        <img src="<?= $config['images_url'] . '/alerta-ultimas-piezas-disponibles.png' ?>"
+          alt="Ultimas piezas disponibles">
       </div>
 
       <!-- Buy Button -->
       <button class="btn-buy w-100">
-        <svg class="shopping-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg class="shopping-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2">
           <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
           <line x1="3" y1="6" x2="21" y2="6"></line>
           <path d="M16 10a4 4 0 0 1-8 0"></path>
@@ -309,8 +312,8 @@ require Core::view('head', 'core');
   }
 
   .variant_selected {
-    border-color: var(--pink-dark);
-    box-shadow: 0 0 15px var(--pink-primary);
+    border-color: var(--color-dark);
+    box-shadow: 0 0 15px var(--color-primary);
   }
 
   /* Estilo para el botón seleccionado */
@@ -396,7 +399,7 @@ require Core::view('head', 'core');
 
 <!-- Script actualizado para validar tallas antes de enviar el formulario -->
 <script>
-  $(document).ready(function() {
+  $(document).ready(function () {
     // Variables para guardar las tallas seleccionadas
     let selectedSize1 = null;
     let selectedSize2 = null;
@@ -418,7 +421,7 @@ require Core::view('head', 'core');
     $('#purchaseForm').append(inputSize1, inputSize2);
 
     // Evento para manejar la selección de talla de la sudadera 1
-    $('.btn-size.sweater-1').on('click', function(e) {
+    $('.btn-size.sweater-1').on('click', function (e) {
       e.preventDefault();
       $('.btn-size.sweater-1').removeClass('selected');
       $(this).addClass('selected');
@@ -428,7 +431,7 @@ require Core::view('head', 'core');
     });
 
     // Evento para manejar la selección de talla de la sudadera 2
-    $('.btn-size.sweater-2').on('click', function(e) {
+    $('.btn-size.sweater-2').on('click', function (e) {
       e.preventDefault();
       $('.btn-size.sweater-2').removeClass('selected');
       $(this).addClass('selected');
@@ -438,16 +441,16 @@ require Core::view('head', 'core');
     });
 
     // Validar el formulario antes de enviarlo
-    $('#purchaseForm').on('submit', function(e) {
+    $('#purchaseForm').on('submit', function (e) {
       if (!selectedSize1 <?php echo ($exist_size_2) ? '|| !selectedSize2' : '' ?>) {
-        e.preventDefault();
-        Swal.fire({
-          icon: 'warning',
-          title: 'Faltan tallas',
-          text: 'Por favor selecciona las tallas de ambas sudaderas antes de continuar.',
-          confirmButtonText: 'Entendido'
-        });
-      }
-    });
+      e.preventDefault();
+      Swal.fire({
+        icon: 'warning',
+        title: 'Faltan tallas',
+        text: 'Por favor selecciona las tallas de ambas sudaderas antes de continuar.',
+        confirmButtonText: 'Entendido'
+      });
+    }
+  });
   });
 </script>

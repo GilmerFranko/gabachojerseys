@@ -1,7 +1,7 @@
 :root {
-  --pink-primary: #ff66c2;
-  --pink-light: #ffb6d9;
-  --pink-dark: #ff009d;
+  --color-primary: #ff66c2;
+  --color-light: #ffb6d9;
+  --color-dark: #ff009d;
   --red-promo: #ff3333;
   --yellow-promo: #ffd700;
 }
@@ -29,7 +29,7 @@ header {
   width: 100%;
 }
 .header-pink {
-  background-color: var(--pink-primary);
+  background-color: var(--color-primary);
   color: white;
 }
 
@@ -245,7 +245,7 @@ header {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #f677b0;
+  background-color: var(--color-primary);
   padding: 15px 0;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
@@ -350,12 +350,12 @@ header {
 
 .pagination li a:hover {
   background-color: var(--primary); /* Fondo púrpura oscuro en hover */
-  color: var(--pink-dark) !important; /* Texto blanco en hover */
+  color: var(--color-dark) !important; /* Texto blanco en hover */
 }
 
 .pagination li.active a {
   background-color: var(--primary); /* Fondo púrpura en página activa */
-  color: var(--pink-dark) !important; /* Texto blanco en página activa */
+  color: var(--color-dark) !important; /* Texto blanco en página activa */
   border-color: var(--primary); /* Borde púrpura en página activa */
 }
 
@@ -366,7 +366,7 @@ header {
 }
 
 .pagination li.waves-effect a:hover i.material-icons {
-  color: var(--pink-dark); /* Color del ícono en hover */
+  color: var(--color-dark); /* Color del ícono en hover */
 }
 
 .center-align {

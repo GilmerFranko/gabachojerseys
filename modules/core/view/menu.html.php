@@ -3,7 +3,7 @@
 ?>
 
 <!-- Header -->
-<header class="" style="background-color: var(--pink-primary);">
+<header class="" style="background-color: var(--color-primary);">
   <div class="container header-pink">
     <div class="container-fluid">
       <?php if ($session->is_admod == 1): ?>

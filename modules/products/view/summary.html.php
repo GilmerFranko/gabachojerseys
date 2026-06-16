@@ -130,8 +130,8 @@ require Core::view('head', 'core');
   }
 
   .payment-option {
-    background: var(--pink-dark)
-      /*linear-gradient(135deg, var(--pink-dark) 0%, #e91e63 100%);*/
+    background: var(--color-dark)
+      /*linear-gradient(135deg, var(--color-dark) 0%, #e91e63 100%);*/
     ;
     border-radius: 24px;
     padding: 24px;
@@ -271,16 +271,17 @@ require Core::view('head', 'core');
   <div class="checkout-container">
     <!-- Order Header -->
     <div class="order-header text-center py-4">
-      <h2 class="order-number">Tu pedido es el <span class="highlight">#<?= isset($order['id']) ? $order['id'] : '---' ?></span></h2>
-      <p class="customer-name">A nombre de: <strong><?= isset($order['customer_name']) ? $order['customer_name'] : 'Cliente' ?></strong></p>
+      <h2 class="order-number">Tu pedido es el <span
+          class="highlight">#<?= isset($order['id']) ? $order['id'] : '---' ?></span></h2>
+      <p class="customer-name">A nombre de:
+        <strong><?= isset($order['customer_name']) ? $order['customer_name'] : 'Cliente' ?></strong></p>
     </div>
 
     <!-- Product Image -->
     <div class="product-showcase text-center mb-4">
       <?php
       $img = '';
-      if (!empty($items) && isset($items[0]['variant']['image']))
-      {
+      if (!empty($items) && isset($items[0]['variant']['image'])) {
         $img = $config['products_url'] . '/' . $items[0]['variant']['image'];
       }
       ?>
@@ -294,7 +295,8 @@ require Core::view('head', 'core');
       <!--<span class="alert-icon">🚨</span>
         <span class="alert-text">¡¡Alerta!! ¡ÚLTIMAS PIEZAS DISPONIBLES!</span>
         <span class="alert-icon">✓</span>-->
-      <img src="<?= $config['images_url'] . '/alerta-ultimas-piezas-disponibles.png' ?>" alt="Ultimas piezas disponibles">
+      <img src="<?= $config['images_url'] . '/alerta-ultimas-piezas-disponibles.png' ?>"
+        alt="Ultimas piezas disponibles">
     </div>
     <!-- Payment Method Selection Header -->
     <div class="payment-header text-center mb-4">
@@ -303,7 +305,8 @@ require Core::view('head', 'core');
         <div class="payment-icon-wrapper">
           <svg width="28" height="28" viewBox="0 0 16 16" fill="#FF1493">
             <path d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1H1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
-            <path d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V5zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2H3z" />
+            <path
+              d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V5zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2H3z" />
           </svg>
         </div>
         SELECCIONA TU FORMA DE PAGO
@@ -319,31 +322,43 @@ require Core::view('head', 'core');
           <h4 class="payment-option-title">1. PAGO CON TARJETA</h4>
           <p class="payment-option-subtitle">CREDITO Y DEBITO</p>
           <div class="card-logos">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/1280px-Visa_Inc._logo.svg.png" alt="Visa" class="card-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MasterCard_Logo.svg/2560px-MasterCard_Logo.svg.png" alt="Mastercard" class="card-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Maestro_logo.png" alt="Maestro" class="card-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/American_Express_logo.svg/1200px-American_Express_logo.svg.png" alt="American Express" class="card-logo">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/1280px-Visa_Inc._logo.svg.png"
+              alt="Visa" class="card-logo">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MasterCard_Logo.svg/2560px-MasterCard_Logo.svg.png"
+              alt="Mastercard" class="card-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Maestro_logo.png" alt="Maestro"
+              class="card-logo">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/American_Express_logo.svg/1200px-American_Express_logo.svg.png"
+              alt="American Express" class="card-logo">
           </div>
         </div>
       </a>
 
       <!-- OXXO Payment -->
-      <a href="https://wa.me/<?= $config['num_phone'] ?>?text=Hola%20deseo%20pagar%20mi%20pedido%20N°1%20con%20OXXO" target="_blank">
+      <a href="https://wa.me/<?= $config['num_phone'] ?>?text=Hola%20deseo%20pagar%20mi%20pedido%20N°1%20con%20OXXO"
+        target="_blank">
         <div class="payment-option">
           <h4 class="payment-option-title">2. DEPOSITO EN OXXO</h4>
           <div class="oxxo-logo-container">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Oxxo_Logo.svg/1200px-Oxxo_Logo.svg.png" alt="OXXO" class="oxxo-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Oxxo_Logo.svg/1200px-Oxxo_Logo.svg.png"
+              alt="OXXO" class="oxxo-logo">
           </div>
         </div>
       </a>
 
       <!-- Bank Transfer -->
-      <a href="https://wa.me/<?= $config['num_phone'] ?>?text=Hola%20deseo%20pagar%20mi%20pedido%20N°1%20con%20Transferencia" target="_blank">
+      <a href="https://wa.me/<?= $config['num_phone'] ?>?text=Hola%20deseo%20pagar%20mi%20pedido%20N°1%20con%20Transferencia"
+        target="_blank">
         <div class="payment-option">
           <h4 class="payment-option-title">3. TRANSFERENCIA</h4>
           <div class="transfer-icon-container">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-bank" viewBox="0 0 16 16">
-              <path d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485-.62H.5a.498.498 0 0 1-.485-.62l.5-2A.5.5 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89zM3.777 3h8.447L8 1zM2 6v7h1V6zm2 0v7h2.5V6zm3.5 0v7h1V6zm2 0v7H12V6zM13 6v7h1V6zm2-1V4H1v1zm-.39 9H1.39l-.25 1h13.72z" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-bank"
+              viewBox="0 0 16 16">
+              <path
+                d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485-.62H.5a.498.498 0 0 1-.485-.62l.5-2A.5.5 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89zM3.777 3h8.447L8 1zM2 6v7h1V6zm2 0v7h2.5V6zm3.5 0v7h1V6zm2 0v7H12V6zM13 6v7h1V6zm2-1V4H1v1zm-.39 9H1.39l-.25 1h13.72z" />
             </svg>
           </div>
         </div>

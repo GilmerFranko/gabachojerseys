@@ -21,12 +21,9 @@
       // Determinamos qué imagen mostrar: la del producto o la de la variante seleccionada
       $display_image = $product['image_url'];
       // Buscamos la imagen de la variante solo si existe la selección
-      if (!empty($_GET['variant_selected']))
-      {
-        foreach ($variants as $v)
-        {
-          if ($v['id'] == $_GET['variant_selected'])
-          {
+      if (!empty($_GET['variant_selected'])) {
+        foreach ($variants as $v) {
+          if ($v['id'] == $_GET['variant_selected']) {
             $display_image = $v['image'];
             break; // Detenemos el bucle en cuanto la encontramos
           }
@@ -35,13 +32,12 @@
       ?>
 
       <div class="product-image-details-container">
-        <img src="<?= $config['products_url'] . '/' . $display_image ?>"
-          alt="<?= htmlspecialchars($product['name']) ?>"
+        <img src="<?= $config['products_url'] . '/' . $display_image ?>" alt="<?= htmlspecialchars($product['name']) ?>"
           class="product-image-details">
       </div>
       <h1 class="product-title"><?= $product['name'] ?></h1>
       <div class="price-section">
-        <?php if ($product['sale_price'] > 0) : ?>
+        <?php if ($product['sale_price'] > 0): ?>
           <span class="price-from">De <span class="crossed-price">$<?= $product['sale_price'] ?></span></span>
         <?php endif; ?>
         <span class="price-main">A $<?= $product['original_price'] ?></span>
@@ -52,7 +48,8 @@
     <!-- Shipping Section -->
     <div class="shipping-banner">
       <i class="text-warning">✈️</i>
-      <strong>ENV&Iacute;O GRATIS &nbsp;<img src="https://cdn-icons-png.flaticon.com/512/5344/5344530.png" width="30" alt="México"></strong>
+      <strong>ENV&Iacute;O GRATIS &nbsp;<img src="https://cdn-icons-png.flaticon.com/512/5344/5344530.png" width="30"
+          alt="México"></strong>
     </div>
     <div class="shipping-date">
       ⚡Compra hoy y recibe el día: <strong><?= getFiveDaysLater() ?></strong>
@@ -93,17 +90,25 @@
       <fieldset class="contenedor-pagos-nuevo">
         <legend class="titulo-pagos-nuevo">
           <svg class="icono-candado-nuevo" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+            <path fill-rule="evenodd"
+              d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+              clip-rule="evenodd" />
           </svg>
           Pago seguro garantizado
         </legend>
 
         <div class="iconos-flex-nuevo">
-          <img class="metodo-pago-nuevo" src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
-          <img class="metodo-pago-nuevo" src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard">
-          <img class="metodo-pago-nuevo" src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
-          <img class="metodo-pago-nuevo" src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Cash_App_RB_F1_Team_Logo.svg" alt="Amex" onerror="this.src='https://img.icons8.com/color/48/000000/amex.png'">
-          <img class="metodo-pago-nuevo logo-oxxo-nuevo" src="https://upload.wikimedia.org/wikipedia/commons/6/66/Oxxo_Logo.svg" alt="OXXO">
+          <img class="metodo-pago-nuevo" src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg"
+            alt="Visa">
+          <img class="metodo-pago-nuevo" src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
+            alt="Mastercard">
+          <img class="metodo-pago-nuevo" src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
+            alt="PayPal">
+          <img class="metodo-pago-nuevo"
+            src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Cash_App_RB_F1_Team_Logo.svg" alt="Amex"
+            onerror="this.src='https://img.icons8.com/color/48/000000/amex.png'">
+          <img class="metodo-pago-nuevo logo-oxxo-nuevo"
+            src="https://upload.wikimedia.org/wikipedia/commons/6/66/Oxxo_Logo.svg" alt="OXXO">
         </div>
       </fieldset>
     </div>
@@ -131,7 +136,7 @@
 
   /* Pink Header Section */
   .pink-header {
-    background-color: var(--pink-primary);
+    background-color: var(--color-primary);
     padding: 30px 20px 40px;
     text-align: center;
     position: relative;
