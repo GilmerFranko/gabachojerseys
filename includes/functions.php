@@ -310,7 +310,7 @@ function bbbr2nl($string)
  * @param string $path
  * @return string
  */
-function gImage(string $image = '', string $path = null, bool $echo = true): string
+function gImage(string $image, string $path, bool $echo = true): string
 {
   global $config;
 

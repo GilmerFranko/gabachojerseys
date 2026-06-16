@@ -47,11 +47,10 @@
 		<script src="<?php echo $config['base_url']; ?>/static/js/custom.js"></script>
 		<script src="<?php echo $config['base_url']; ?>/static/js/admin.js"></script>
 	<?php else: ?>
-		<link rel="stylesheet" href="<?php echo $config['base_url']; ?>/static/dist/css/public.css">
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" onload="this.media='all'">
-
-		<script type="module" src="<?php echo $config['base_url']; ?>/static/dist/js/public.js" defer></script>
-	<?php endif; ?>
+        <?php echo Core::vite('public', $config['base_url']); ?>
+		
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" onload="this.media='all'">
+    <?php endif; ?>
 
 	<script defer type="text/javascript" src="<?php echo $config['base_url']; ?>/static/js/toastify.js"></script>
 	<!-- Import toastify.css -->

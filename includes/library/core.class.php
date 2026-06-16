@@ -156,4 +156,51 @@ final class Core
 
         exit('Falta la variable: ' . $sName);
     }
+
+    // En tu archivo Core.php
+    public static function vite($entry, $baseUrl) {
+        // Cambiar a false cuando subas el proyecto a producción
+        $isDev = $_ENV['DEVELOPMENT']; 
+
+        if ($isDev) {
+            // En desarrollo, apuntamos al servidor local de Vite
+            $path = ($entry === 'public') ? 'static/js/public-entry.js' : 'static/js/admin-entry.js';
+            return '
+                <script type="module" src="http://localhost:5173/@vite/client"></script>
+                <script type="module" src="http://localhost:5173/' . $path . '"></script>
+            ';
+        } else {
+            // EN PRODUCCIÓN: Leemos el manifest generado por Vite
+            // Ajusta esta ruta a donde se ubica físicamente tu manifest.json desde este archivo PHP
+            $manifestPath = __DIR__ . '/../static/dist/.vite/manifest.json';
+            
+            if (!file_exists($manifestPath)) {
+                return '';
+            }
+
+            $manifest = json_decode(file_get_contents($manifestPath), true);
+            
+            // Buscamos la clave en el JSON (ej: "static/js/public-entry.js")
+            $entryKey = ($entry === 'public') ? 'static/js/public-entry.js' : 'static/js/admin-entry.js';
+            
+            if (!isset($manifest[$entryKey])) {
+                return "";
+            }
+
+            $html = '';
+            $fileData = $manifest[$entryKey];
+
+            // 1. Si el archivo tiene CSS asociado, imprimimos sus etiquetas <link>
+            if (isset($fileData['css'])) {
+                foreach ($fileData['css'] as $cssFile) {
+                    $html .= '<link rel="stylesheet" href="' . $baseUrl . '/static/dist/' . $cssFile . '">';
+                }
+            }
+
+            // 2. Imprimimos la etiqueta <script> del JS principal con su hash
+            $html .= '<script type="module" src="' . $baseUrl . '/static/dist/' . $fileData['file'] . '" defer></script>';
+
+            return $html;
+        }
+    }
 }

@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   build: {
+    manifest: true,
     outDir: "static/dist",
     rollupOptions: {
       input: {
@@ -9,12 +10,14 @@ export default defineConfig({
         admin: "./static/js/admin-entry.js",
         public: "./static/js/public-entry.js",
       },
-      output: {
-        // Los JS irán a dist/js/admin.js y dist/js/public.js
-        entryFileNames: "js/[name].js",
-        // Los CSS irán a dist/css/admin.css y dist/css/public.css
-        assetFileNames: "css/[name].[ext]",
-      },
     },
+  },
+  server: {
+    port: 5173,
+    strictPort: true,
+    cors: true,
+  },
+  css: {
+    devSourcemap: false,
   },
 });
