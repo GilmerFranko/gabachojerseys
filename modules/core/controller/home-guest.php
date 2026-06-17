@@ -15,10 +15,17 @@
 $page['name'] = 'Inicio';
 $page['code'] = 'homeGuest';
 
-$search = (isset($_GET['search'])) ? $_GET['search'] : '';
+$variant_selected = $_GET['variant_selected'] ?? null;
 
-// Optiene los productos
-$products = loadClass('products/product')->getAllProducts(['name' => $search], 20);
+$jersey = loadClass('jerseys/jerseys')->getLastJersey();
 
-// Optiene la imagen de la sección principal
 $sectionHero = getColumns('configuration', ['id', 'image_section'], ['id', 1]);
+
+if (!isset($jersey['id']))
+{
+  die("No hay producto registrado.");
+}
+
+$variants = loadClass('products/variants')->getProductVariants($jersey['id']);
+
+$parser->parse($jersey['description']);

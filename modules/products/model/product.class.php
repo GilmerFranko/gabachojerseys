@@ -43,7 +43,7 @@ class Product extends Model
 
     // Consulta para obtener el total de resultados (sin límite de paginación)
     $total_query = $this->db->query(
-      'SELECT COUNT(*) 
+      'SELECT COUNT(*)
         FROM `products` AS p
         ' . $where_clause
     );
@@ -55,13 +55,13 @@ class Product extends Model
 
     // Construir la consulta SQL final con paginación
     $query = $this->db->query(
-      'SELECT p.*, tp.`position` AS top_position 
+      'SELECT p.*, tp.`position` AS top_position
         FROM `products` AS p
         LEFT JOIN top_products tp ON p.id = tp.product_id
         ' . $where_clause . '
         ORDER BY
             CASE WHEN tp.position IS NULL THEN 1 ELSE 0 END,
-            tp.position ASC,    
+            tp.position ASC,
             p.`created_at` ' . $order_by . '
         LIMIT ' . $data['pages']['limit']
     );
@@ -89,9 +89,9 @@ class Product extends Model
   public function getProductById(int $product_id)
   {
     $query = $this->db->query(
-      'SELECT * 
-       FROM `products` 
-       WHERE `id` = ' . intval($product_id) . ' 
+      'SELECT *
+       FROM `products`
+       WHERE `id` = ' . intval($product_id) . '
        LIMIT 1'
     );
 

@@ -21,9 +21,12 @@
       // Determinamos qué imagen mostrar: la del producto o la de la variante seleccionada
       $display_image = $product['image_url'];
       // Buscamos la imagen de la variante solo si existe la selección
-      if (!empty($_GET['variant_selected'])) {
-        foreach ($variants as $v) {
-          if ($v['id'] == $_GET['variant_selected']) {
+      if (!empty($_GET['variant_selected']))
+      {
+        foreach ($variants as $v)
+        {
+          if ($v['id'] == $_GET['variant_selected'])
+          {
             $display_image = $v['image'];
             break; // Detenemos el bucle en cuanto la encontramos
           }

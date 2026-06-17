@@ -10,7 +10,7 @@
  *
  */
 
-$page['name'] = 'Proceso de compra - ' . $product['name'];
+$page['name'] = 'Proceso de compra';
 
 require Core::view('head', 'core');
 
@@ -19,7 +19,12 @@ require Core::view('head', 'core');
 
 <section class="first-section">
   <div class="container py-4">
-    <form action="<?= gLink('products/process.purchase', ['action' => 'process_purchase', 'product_id' => $product['id'], 'variant_id' => $variant_id, 'size_sweater_1' => $size_sweater_1, 'size_sweater_2' => $size_sweater_2]) ?>" method="POST">
+    <form action="<?= gLink('jerseys/process.purchase', ['action' => 'process_purchase']) ?>" method="POST">
+      <input type="hidden" name="jersey_id" value="<?= $jersey['id'] ?>">
+      <input type="hidden" name="jersey1_model" value="<?= $jersey1_model ?>">
+      <input type="hidden" name="jersey2_model" value="<?= $jersey2_model ?>">
+      <input type="hidden" name="jersey1_size" value="<?= $jersey1_size ?>">
+      <input type="hidden" name="jersey2_size" value="<?= $jersey2_size ?>">
       <div class="checkout-container">
         <!-- Header -->
         <div class="text-center mb-4">
@@ -81,10 +86,6 @@ require Core::view('head', 'core');
           <p class="section-subtitle mb-3">Indica tu direccion donde recibiras tus sudaderas</p>
 
           <form class="address-form">
-            <!-- Hidden inputs -->
-            <input type="text" name="product_id" value="<?= $product['id'] ?>" hidden>
-            <input type="text" name="variant_id" value="<?= $variant_id ?>" hidden>
-            <input type="text" name="size_sweater_1" value="<?= $size_sweater_1 ?>" hidden>
             <input type="date" name="estimated_delivery" value="<?= date('Y-m-d', strtotime('+7 days')) ?>" hidden>
             <?php if (!empty($size_sweater_2)): ?>
               <input type="text" name="size_sweater_2" value="<?= $size_sweater_2 ?>" hidden>

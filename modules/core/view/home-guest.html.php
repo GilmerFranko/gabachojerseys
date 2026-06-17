@@ -23,34 +23,81 @@ require Core::view('menu', 'core');
 	<!-- Main Promo Banner -->
 	<div class="container my-3">
 		<div class="promo-banner">
-			<img src="<?= $config['products_url'] . '/' . $sectionHero['image_section'] ?>" alt="Tom & Jerry" class="banner-image">
+			<img src="<?= $config['products_url'] . '/' . $sectionHero['image_section'] ?>" alt="banner-image" class="banner-image">
 			<?php if ($session->is_admod == 1) : ?>
 				<a href="<?= gLink('admin/edit.section-hero') ?>" class="banner-edit">Editar</a>
 			<?php endif; ?>
 		</div>
 	</div>
 
-	<!-- Delivery Banner -->
-	<div class="delivery-banner">
-		<div class="container">
-			<div class="d-flex align-items-center justify-content-center">
-				<i class="bi bi-lightning-fill me-2"></i>
-				<span>Compra hoy y recibe tu pedido en menos de 5 días</span>
-				<i class="bi bi-truck ms-2"></i>
-			</div>
-		</div>
-	</div>
+	<?php //require Core::view('product.details', 'products');
+	?>
 
-	<!-- Product Grid -->
-	<div class="container my-3">
-		<?php require Core::view('products.area', 'products'); ?>
-	</div>
-
-	<!--paginador-->
-	<?php echo $products['pages']['paginator']; ?>
-	<!--fin_paginador-->
-
+	<?php require Core::view('product-module', 'jerseys'); ?>
+	<?php require Core::view('delivery-module', 'jerseys'); ?>
+	<?php require Core::view('trend-module', 'jerseys'); ?>
+	<?php require Core::view('review-module', 'jerseys'); ?>
 </section>
+
+
+
+<!-- Script actualizado para validar tallas antes de enviar el formulario -->
+<script>
+	$(document).ready(function() {
+		// Variables para guardar las tallas seleccionadas
+		let selectedSize1 = null;
+		let selectedSize2 = null;
+
+		// Crear inputs ocultos para las tallas
+		const inputSize1 = $('<input>', {
+			type: 'hidden',
+			name: 'size_sweater_1',
+			id: 'size_sweater_1'
+		});
+
+		const inputSize2 = $('<input>', {
+			type: 'hidden',
+			name: 'size_sweater_2',
+			id: 'size_sweater_2'
+		});
+
+		// Agregar los inputs al formulario
+		$('#purchaseForm').append(inputSize1, inputSize2);
+
+		// Evento para manejar la selección de talla de la sudadera 1
+		$('.btn-size.sweater-1').on('click', function(e) {
+			e.preventDefault();
+			$('.btn-size.sweater-1').removeClass('selected');
+			$(this).addClass('selected');
+			selectedSize1 = $(this).text();
+			$('#size_sweater_1').val(selectedSize1);
+			console.log('Talla seleccionada para Sudadera 1:', selectedSize1);
+		});
+
+		// Evento para manejar la selección de talla de la sudadera 2
+		$('.btn-size.sweater-2').on('click', function(e) {
+			e.preventDefault();
+			$('.btn-size.sweater-2').removeClass('selected');
+			$(this).addClass('selected');
+			selectedSize2 = $(this).text();
+			$('#size_sweater_2').val(selectedSize2);
+			console.log('Talla seleccionada para Sudadera 2:', selectedSize2);
+		});
+
+		// Validar el formulario antes de enviarlo
+		$('#purchaseForm').on('submit', function(e) {
+			if (!selectedSize1 <?php echo ($exist_size_2) ? '|| !selectedSize2' : '' ?>) {
+				e.preventDefault();
+				Swal.fire({
+					icon: 'warning',
+					title: 'Faltan tallas',
+					text: 'Por favor selecciona las tallas de ambas sudaderas antes de continuar.',
+					confirmButtonText: 'Entendido'
+				});
+			}
+		});
+	});
+</script>
 
 
 <!-- FOOTER -->
