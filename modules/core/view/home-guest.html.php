@@ -63,39 +63,6 @@ require Core::view('menu', 'core');
 
 		// Agregar los inputs al formulario
 		$('#purchaseForm').append(inputSize1, inputSize2);
-
-		// Evento para manejar la selección de talla de la sudadera 1
-		$('.btn-size.sweater-1').on('click', function(e) {
-			e.preventDefault();
-			$('.btn-size.sweater-1').removeClass('selected');
-			$(this).addClass('selected');
-			selectedSize1 = $(this).text();
-			$('#size_sweater_1').val(selectedSize1);
-			console.log('Talla seleccionada para Sudadera 1:', selectedSize1);
-		});
-
-		// Evento para manejar la selección de talla de la sudadera 2
-		$('.btn-size.sweater-2').on('click', function(e) {
-			e.preventDefault();
-			$('.btn-size.sweater-2').removeClass('selected');
-			$(this).addClass('selected');
-			selectedSize2 = $(this).text();
-			$('#size_sweater_2').val(selectedSize2);
-			console.log('Talla seleccionada para Sudadera 2:', selectedSize2);
-		});
-
-		// Validar el formulario antes de enviarlo
-		$('#purchaseForm').on('submit', function(e) {
-			if (!selectedSize1 <?php echo ($exist_size_2) ? '|| !selectedSize2' : '' ?>) {
-				e.preventDefault();
-				Swal.fire({
-					icon: 'warning',
-					title: 'Faltan tallas',
-					text: 'Por favor selecciona las tallas de ambas sudaderas antes de continuar.',
-					confirmButtonText: 'Entendido'
-				});
-			}
-		});
 	});
 </script>
 
