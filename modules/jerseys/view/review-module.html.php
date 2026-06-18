@@ -1,31 +1,35 @@
 <?php
-// Datos de las reseñas de clientes
-$reseñas = [
-  [
-    'nombre' => 'Eunice D.',
-    'fecha' => '16/6/2026',
-    'calificacion' => 5,
-    'comentario' => 'Sólo el tiempo de envío ya que decía 2 días y llegó después',
-    'detalles' => 'XL (Envio Express) / Sin Dorsal / Fan',
-    'img_producto' => 'https://images.unsplash.com/photo-1596464716127-f2a89987a8aa?auto=format&fit=crop&w=100&q=80'
-  ],
-  [
-    'nombre' => 'Juan Carlos G.',
-    'fecha' => '15/6/2026',
-    'calificacion' => 5,
-    'comentario' => 'Llegó en tiempo establecido. Buena calidad.',
-    'detalles' => 'Fan / Con Dorsal / L',
-    'img_producto' => 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=100&q=80'
-  ],
-  [
-    'nombre' => 'Macaria M.',
-    'fecha' => '14/6/2026',
-    'calificacion' => 5,
-    'comentario' => 'Súper contenta con mis playeras, pronto haré mi tercer pedido!',
-    'detalles' => 'S / Con Dorsal / Fan',
-    'img_producto' => 'https://images.unsplash.com/photo-1504450758481-7338eba7524a?auto=format&fit=crop&w=100&q=80'
-  ]
-];
+// Datos de las reseñas de clientes (usar de DB o fallback)
+if (!isset($reviews) || empty($reviews)) {
+  $reseñas = [
+    [
+      'customer_name' => 'Eunice D.',
+      'created_at' => '16/6/2026',
+      'rating' => 5,
+      'comment' => 'Sólo el tiempo de envío ya que decía 2 días y llegó después',
+      'details' => 'XL (Envio Express) / Sin Dorsal / Fan',
+      'image_url' => 'https://images.unsplash.com/photo-1596464716127-f2a89987a8aa?auto=format&fit=crop&w=100&q=80'
+    ],
+    [
+      'customer_name' => 'Juan Carlos G.',
+      'created_at' => '15/6/2026',
+      'rating' => 5,
+      'comment' => 'Llegó en tiempo establecido. Buena calidad.',
+      'details' => 'Fan / Con Dorsal / L',
+      'image_url' => 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=100&q=80'
+    ],
+    [
+      'customer_name' => 'Macaria M.',
+      'created_at' => '14/6/2026',
+      'rating' => 5,
+      'comment' => 'Súper contenta con mis playeras, pronto haré mi tercer pedido!',
+      'details' => 'S / Con Dorsal / Fan',
+      'image_url' => 'https://images.unsplash.com/photo-1504450758481-7338eba7524a?auto=format&fit=crop&w=100&q=80'
+    ]
+  ];
+} else {
+  $reseñas = $reviews;
+}
 ?>
 <div class="container px-0 my-4">
   <div class="reviews-container">
@@ -38,14 +42,34 @@ $reseñas = [
       <?php foreach ($reseñas as $r): ?>
         <div class="review-card">
           <div class="review-header">
-            <span class="user-name"><?= $r['nombre'] ?></span>
+            <span class="user-name"><?= htmlspecialchars($r['customer_name'] ?? '') ?></span>
             <span class="verified">✔ Verificado</span>
           </div>
-          <div class="date"><?= $r['fecha'] ?></div>
-          <div class="stars">★★★★★</div>
-          <p class="comment"><?= $r['comentario'] ?></p>
-          <div class="item-details"><?= $r['detalles'] ?></div>
-          <img src="<?= $r['img_producto'] ?>" alt="Producto" class="product-thumb">
+          <div class="date">
+            <?php 
+              // Formatear fecha si viene de timestamp de DB
+              if (is_numeric($r['created_at'])) {
+                echo date('d/m/Y', $r['created_at']);
+              } elseif (strtotime($r['created_at']) !== false) {
+                echo date('d/m/Y', strtotime($r['created_at']));
+              } else {
+                echo htmlspecialchars($r['created_at'] ?? '');
+              }
+            ?>
+          </div>
+          <div class="stars">
+            <?php 
+              $rating = intval($r['rating'] ?? 5);
+              echo str_repeat('★', $rating) . str_repeat('☆', 5 - $rating);
+            ?>
+          </div>
+          <p class="comment"><?= htmlspecialchars($r['comment'] ?? '') ?></p>
+          <?php if (!empty($r['details'])): ?>
+            <div class="item-details"><?= htmlspecialchars($r['details']) ?></div>
+          <?php endif; ?>
+          <?php if (!empty($r['image_url'])): ?>
+            <img src="<?= htmlspecialchars($r['image_url']) ?>" alt="Producto" class="product-thumb">
+          <?php endif; ?>
         </div>
       <?php endforeach; ?>
     </div>

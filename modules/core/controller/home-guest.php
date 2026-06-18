@@ -28,4 +28,6 @@ if (!isset($jersey['id']))
 
 $variants = loadClass('products/variants')->getProductVariants($jersey['id']);
 
+$reviews = loadClass('admin/reviews')->getAllReviews(20);
+
 $parser->parse($jersey['description']);
