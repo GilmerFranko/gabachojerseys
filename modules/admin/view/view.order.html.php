@@ -224,6 +224,9 @@ require Core::view('head', 'core');
               <?php echo htmlspecialchars($order['customer_whatsapp']); ?>
             </a>
           </p>
+          <a href="mailto:<?= $order['customer_email'] ?>" target="_blank" class="wa-link">
+            <?php echo htmlspecialchars($order['customer_email']); ?>
+          </a>
 
           <div class="section-title" style="margin-top:30px">
             <i class="material-icons">location_on</i> Envío

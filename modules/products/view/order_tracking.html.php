@@ -301,8 +301,11 @@ require Core::view('head', 'core');
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <div class="container1">
   <!-- Buscador Siempre Visible -->
-  <div class="tracking-header">
+  <div class="tracking-header text-center">
     <h2>ESTADO DE MI PEDIDO</h2>
+    <h5>Si no sabes cual es tu numero de pedido, puedes buscarlo en tu correo</h5>
+    <small>Si no lo encuentras busca la bandeja de spam</small>
+    <br><br>
     <form action="<?= gLink('rastrear') ?>" method="GET" class="search-order-container">
       <input type="text" name="order_id" placeholder="Número de pedido (ej: 7721)..."
         value="<?= isset($_GET['order_id']) ? htmlspecialchars($_GET['order_id']) : '' ?>" required>

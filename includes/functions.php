@@ -573,3 +573,14 @@ function clearPendingPayment(): void
   unset($_SESSION['pending_order_id']);
   setcookie('pending_order_id', '', time() - 3600, "/");
 }
+
+/**
+ * Verifica si una cadena de texto tiene formato de email válido
+ * * @param string $email El correo a validar
+ * @return bool True si es válido, false si no
+ */
+function isValidEmail(string $email): bool
+{
+  // filter_var devuelve el email si es válido, o false si no lo es
+  return (bool)filter_var($email, FILTER_VALIDATE_EMAIL);
+}

@@ -29,6 +29,16 @@ if (isset($_GET['action']) && $_GET['action'] === 'process_purchase')
     $msg_order[] = 'Debe ingresar su WhatsApp.';
   }
 
+  if (!isset($_POST['customer_email']) || empty($_POST['customer_email']))
+  {
+    $msg_order[] = 'Debe ingresar su Email.';
+  }
+
+  if (!isValidEmail($_POST['customer_email']))
+  {
+    $msg_order[] = 'Debe introducir un Email valido.';
+  }
+
   if (!isset($_POST['shipping_method']) || empty($_POST['shipping_method']))
   {
     $msg_order[] = 'Debe seleccionar un metodo de envío.';
@@ -88,6 +98,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'process_purchase')
     $jersey2_size = cleanString($_POST['jersey2_size']);
     $customer_name = cleanString($_POST['customer_name']);
     $customer_whatsapp = cleanString($_POST['customer_whatsapp']);
+    $customer_email = cleanString($_POST['customer_email']);
     $estimated_delivery = cleanString($_POST['estimated_delivery']);
     $shipping_method = cleanString($_POST['shipping_method']);
     $shipping_address = cleanString($_POST['shipping_address']);
@@ -135,6 +146,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'process_purchase')
         'shipping_state' => $shipping_state,
         'shipping_city' => $shipping_city,
         'customer_whatsapp' => $customer_whatsapp,
+        'customer_email' => $customer_email,
         'estimated_delivery' => $estimated_delivery,
         'total_amount' => (isset($jersey['sale_price']) && $jersey['sale_price'] > 0) ? $jersey['sale_price'] : $jersey['original_price'],
         'order_status' => 'pending'
@@ -157,6 +169,37 @@ if (isset($_GET['action']) && $_GET['action'] === 'process_purchase')
         // Crear items del pedido
         if ($orderItemsModel->createOrderItem($data_item_order))
         {
+          // Obtener imágenes configuradas para los jerseys
+          $base_url = Core::config('base_url');
+          $j1_img_field = 'jersey1_model' . $jersey1_model;
+          $j2_img_field = 'jersey2_model' . $jersey2_model;
+
+          $jersey1_img_url = !empty($jersey[$j1_img_field]) ? Core::config('products_url') . $jersey[$j1_img_field] : '';
+          $jersey2_img_url = !empty($jersey[$j2_img_field]) ? Core::config('products_url') . $jersey[$j2_img_field] : '';
+
+          $mail_params = [
+            'order' => $data_order,
+            'items' => [
+              [
+                'jersey1_model' => $jersey1_model,
+                'jersey1_size' => $jersey1_size,
+                'jersey2_model' => $jersey2_model,
+                'jersey2_size' => $jersey2_size,
+                'jersey1_img_url' => $jersey1_img_url,
+                'jersey2_img_url' => $jersey2_img_url
+              ]
+            ]
+          ];
+
+          // Agrega ID del pedido creado a los parámetros
+          $mail_params['order']['id'] = $order_id;
+
+          // Enviar correo de confirmación utilizando el modelo email.class.php
+          // Nota: Si no hay un correo de usuario registrado (los clientes invitados ingresan WhatsApp),
+          // podríamos enviar el correo al administrador para que se entere del nuevo pedido.
+          $admin_email = $customer_email;
+          Core::model('email', 'core')->sendEmail('neworder', $admin_email, $mail_params);
+
           setTI([['Pedido creado exitosamente.']]);
           redirect('pedido/' . $order_id);
           exit;
@@ -176,9 +219,8 @@ if (isset($_GET['action']) && $_GET['action'] === 'process_purchase')
       if (!empty($msg_order2))
       {
         setTI([$msg_order2]);
-        die(var_export($msg_order2, 1));
-        //redirect('core/home-guest', ['variant_id' => $variant_id]);
-        //exit;
+        redirect('/');
+        exit;
       }
     }
     else
@@ -191,9 +233,8 @@ if (isset($_GET['action']) && $_GET['action'] === 'process_purchase')
   else
   {
     setTI([$msg_order]);
-    die(var_export($msg_order, 1));
-    //redirect('/');
-    //exit;
+    redirect('/');
+    exit;
   }
 }
 
@@ -275,7 +316,6 @@ if (empty($msg))
 // Si hay errores, redirigir con mensajes
 else
 {
-  die(var_export($msg, 1));
-  //redirect('core/home-guest', ['variant_id' => $variant_id]);
-  //exit;
+  redirect('core/home-guest', ['variant_id' => $variant_id]);
+  exit;
 }

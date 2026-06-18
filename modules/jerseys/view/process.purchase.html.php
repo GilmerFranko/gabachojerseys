@@ -124,6 +124,10 @@ require Core::view('head', 'core');
             <label class="form-label">Numero de WhatsApp</label>
             <input type="text" name="customer_whatsapp" id="" class="form-control mx-3" style="flex: 1;">
           </div>
+          <div class="form-field d-flex align-items-center">
+            <label class="form-label">Email</label>
+            <input type="email" name="customer_email" id="customer_email" class="form-control mx-3" style="flex: 1;" required>
+          </div>
         </div>
 
         <hr class="divider">

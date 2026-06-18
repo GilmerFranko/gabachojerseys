@@ -31,8 +31,8 @@ if (isset($_GET['order_id']) && !empty($_GET['order_id']))
   if (!empty($msg))
   {
     setTI([$msg]);
-    //redirect('products/order_tracking');
-    //exit;
+    redirect('products/order_tracking');
+    exit;
   }
 
   $class_order_status = [

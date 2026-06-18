@@ -32,9 +32,9 @@ if ($sModule != 'admin'): ?>
 			<div class="container-fluid">
 				<div class="d-flex justify-content-around align-items-center">
 					<div class="nav-item">
-						<a href="" class="waves-effect waves-blue">
-							<i class="bi bi-cart3"></i>
-							<div class="small">Carrito</div>
+						<a href="https://wa.me/<?= $config['num_phone'] ?>" class="waves-effect waves-blue">
+							<i class="bi bi-whatsapp"></i>
+							<div class="small">Contacto</div>
 						</a>
 					</div>
 					<div class="nav-item active">
