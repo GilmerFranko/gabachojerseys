@@ -162,7 +162,7 @@ final class Core
   {
     // Cambiar a false cuando subas el proyecto a producción
     $isDev = $_ENV['DEVELOPMENT'];
-    if ($isDev === true)
+    if ($isDev === 'true')
     {
       // En desarrollo, apuntamos al servidor local de Vite
       $path = ($entry === 'public') ? 'static/js/public-entry.js' : 'static/js/admin-entry.js';
