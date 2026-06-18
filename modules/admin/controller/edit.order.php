@@ -94,20 +94,20 @@ if (isset($_GET['action']) && $_GET['action'] == 'edit_order')
     $msg[] = 'Debe ingresar un estado de pedido.';
   }
 
-  if (!isset($_POST['payment_method']) or empty($_POST['payment_method']))
-  {
-    $msg[] = 'Debe ingresar un metodo de pago.';
-  }
+  // if (!isset($_POST['payment_method']) or empty($_POST['payment_method']))
+  // {
+  //   $msg[] = 'Debe ingresar un metodo de pago.';
+  // }
 
-  if (!isset($_POST['size_hoodie_1']) or empty($_POST['size_hoodie_1']))
-  {
-    $msg[] = 'Debe ingresar la talla 1.';
-  }
+  // if (!isset($_POST['size_hoodie_1']) or empty($_POST['size_hoodie_1']))
+  // {
+  //   $msg[] = 'Debe ingresar la talla 1.';
+  // }
 
-  if (!isset($_POST['size_hoodie_2']) or empty($_POST['size_hoodie_2']))
-  {
-    $msg[] = 'Debe ingresar la talla 2.';
-  }
+  // if (!isset($_POST['size_hoodie_2']) or empty($_POST['size_hoodie_2']))
+  // {
+  //   $msg[] = 'Debe ingresar la talla 2.';
+  // }
 
   if (!isset($_POST['item_order_id']) or empty($_POST['item_order_id']))
   {
@@ -125,12 +125,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'edit_order')
       'shipping_state' => cleanString($_POST['shipping_state']),
       'estimated_delivery' => cleanString($_POST['estimated_delivery']),
       'order_status' => cleanString($_POST['order_status']),
-      'payment_method' => cleanString($_POST['payment_method']),
-    ];
-
-    $eItemOrder = [
-      'size_hoodie_1' => cleanString($_POST['size_hoodie_1']),
-      'size_hoodie_2' => cleanString($_POST['size_hoodie_2']),
     ];
 
     $itemOrderId = cleanString($_POST['item_order_id']);
@@ -141,10 +135,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'edit_order')
       $msg[] = 'No se ha podido actualizar el pedido.';
     }
 
-    if (loadClass('admin/order')->updateItem($itemOrderId, $eItemOrder) === 0)
-    {
-      //$msg[] = 'No se ha podido actualizar el pedido.';
-    }
     if (empty($msg))
     {
       setToast([['Pedido actualizado correctamente.']]);

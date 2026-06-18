@@ -63,10 +63,10 @@ class Order extends Model
 
     // Construir la consulta SQL final con paginación
     $query = $this->db->query(
-      'SELECT * 
+      'SELECT *
         FROM `orders` AS o
         ' . $where_clause . '
-        ORDER BY 
+        ORDER BY
             o.`order_status`,`id` ' . $order_by . '
         LIMIT ' . $data['pages']['limit']
     );
@@ -93,7 +93,7 @@ class Order extends Model
   public function getOrderById($order_id)
   {
     $query = $this->db->query(
-      'SELECT * 
+      'SELECT *
         FROM `orders` AS o
         WHERE o.`id` = ' . (int)$order_id
     );
@@ -118,12 +118,10 @@ class Order extends Model
   public function getItemsByOrderId($order_id)
   {
     $query = $this->db->query(
-      'SELECT *, oi.`id` AS `item_id`, p.`id` AS `product_id`, cv.`id` AS `variant_id`
+      'SELECT *, oi.`id` AS `item_id`, j.`id` AS `jersey_id`
         FROM `order_items` AS oi
-        INNER JOIN `products` AS p
-          ON oi.`product_id` = p.`id`
-        INNER JOIN `color_variants` as cv
-          ON oi.`variant_id` = cv.`id`
+        INNER JOIN `jerseys` AS j
+          ON oi.`product_id` = j.`id`
         WHERE oi.`order_id` = ' . (int)$order_id
     );
 

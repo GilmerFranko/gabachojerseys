@@ -76,3 +76,6 @@ foreach ($statuses as $index => $status)
     $cos[$status] = '';
   }
 }
+
+// $jerser1_model_selected = $items;
+// die(var_export($jerser1_model_selected, 1));

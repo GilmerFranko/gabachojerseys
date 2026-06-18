@@ -162,50 +162,6 @@ require Core::view('head', 'core');
                 </select>
                 <label>Estado del Pedido</label>
               </div>
-
-              <div class="input-field col s12">
-                <select id="payment_method" name="payment_method">
-                  <option value="Card" <?= ($order['payment_method'] == 'Card') ? 'selected' : ''  ?>>Tarjeta</option>
-                  <option value="OXXO" <?= ($order['payment_method'] == 'OXXO') ? 'selected' : ''  ?>>OXXO</option>
-                  <option value="Transfer" <?= ($order['payment_method'] == 'Transfer') ? 'selected' : ''  ?>>Transferencia</option>
-                </select>
-                <label>Método de Pago</label>
-              </div>
-            </div>
-
-            <div class="section-title" style="margin-top:20px">
-              <i class="material-icons">list</i> Productos en el Pedido
-            </div>
-
-            <div id="productsList">
-              <!-- Item 1: Hoodie (Con tallas) -->
-              <div class="product-item">
-                <div class="row" style="margin-bottom:0">
-                  <div class="input-field col s8">
-                    <input type="text" value="Hoodie Duo Premium" placeholder="Producto" disabled>
-                    <small>Variante: Black-Gold</small>
-                  </div>
-                  <div class="input-field col s4">
-                    <input type="number" value="1" disabled>
-                    <label>Cant.</label>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="input-field col s6">
-                    <input type="text" name="size_hoodie_1" value="<?= $items[0]['size_hoodie_1'] ?>" placeholder="Talla 1">
-                    <label>Talla Hoodie 1</label>
-                  </div>
-                  <div class="input-field col s6">
-                    <input type="text" name="size_hoodie_2" value="<?= $items[0]['size_hoodie_2'] ?>" placeholder="Talla 2">
-                    <label>Talla Hoodie 2</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="total-section">
-              <span class="grey-text">Total del Pedido:</span>
-              <h4 class="teal-text text-darken-2" style="margin:5px 0">$<?= $order['total_amount'] ?></h4>
             </div>
           </div>
         </div>

@@ -245,48 +245,49 @@ require Core::view('head', 'core');
           <table class="highlight responsive-table">
             <thead>
               <tr>
-                <th>Producto</th>
-                <th>Variante/Tallas</th>
-                <th class="center-align">Cant.</th>
+                <th>Jearsy 1</th>
+                <th>Talla</th>
                 <th class="right-align">Precio</th>
-                <th class="right-align">Subtotal</th>
+                <!-- <th class="right-align">Subtotal</th> -->
               </tr>
             </thead>
             <tbody>
               <?php foreach ($items as $item): ?>
+                <?php
+                $num_model1 = $item['jersey1_model'];
+                $img_jersey1 = 'jersey1_model' . $num_model1;
+                $num_model2 = $item['jersey2_model'];
+                $img_jersey2 = 'jersey2_model' . $num_model2;
+                ?>
                 <tr class="item-row">
                   <td>
                     <div class="product-cell">
-                      <img src="<?= $config['products_url'] . '/' . $item['image'] ?: 'https://via.placeholder.com/50' ?>" alt="<?= htmlspecialchars($item['name']) ?>" class="product-table-img materialboxed">
+                      <img src="<?= $config['products_url'] . '/' . $item[$img_jersey1] ?: 'https://via.placeholder.com/50' ?>" alt="" class="product-table-img materialboxed">
                       <div>
-                        <strong><?= $item['name'] ?></strong><br>
+                        Jersey 1
                         <small class="grey-text">ID: <?= $item['id'] ?></small>
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <span class="variant-tag"><?= $item['color_name'] ?></span><br>
-                    <span>T1: <?= $item['size_hoodie_1'] ?> | T2: <?= $item['size_hoodie_2'] ?></span>
-                  </td>
-                  <td class="center-align"><?= $item['quantity'] ?></td>
+                  <td><?= $item['jersey1_size'] ?></td>
                   <td class="right-align">$<?= number_format($item['price_at_purchase'], 2, '.', ',') ?></td>
-                  <td class="right-align"><strong>$<?= number_format($item['subtotal'], 2, '.', ',') ?></strong></td>
+                </tr>
+                <tr class="item-row">
+                  <td>
+                    <div class="product-cell">
+                      <img src="<?= $config['products_url'] . '/' . $item[$img_jersey2] ?: 'https://via.placeholder.com/50' ?>" alt="" class="product-table-img materialboxed">
+                      <div>
+                        Jersey 2
+                        <small class="grey-text">ID: <?= $item['id'] ?></small>
+                      </div>
+                    </div>
+                  </td>
+                  <td><?= $item['jersey2_size'] ?></td>
+                  <td class="right-align">$<?= number_format($item['price_at_purchase'], 2, '.', ',') ?></td>
                 </tr>
               <?php endforeach; ?>
             </tbody>
-            <tfoot>
-              <tr>
-                <td colspan="3"></td>
-                <td class="right-align"><strong>TOTAL:</strong></td>
-                <td class="right-align">
-                  <h5 class="teal-text text-darken-2" style="margin:0">$<?= number_format(array_sum(array_column($items, 'subtotal')), 2, '.', ',') ?></h5>
-                </td>
-              </tr>
-            </tfoot>
           </table>
-          <div style="margin-top: 30px; border-top: 1px dashed #ccc; padding-top: 20px;">
-            <p><strong>Método de Pago:</strong> <span class="blue-grey-text text-darken-2"><?= @$arr_methot_payment[$order['payment_method']] ?></span></p>
-          </div>
         </div>
       </div>
     </div>
