@@ -61,12 +61,6 @@ $pendingOrdersCount = loadClass('admin/order')->getPendingOrdersCount();
               <i class="material-icons">group</i> Usuarios
             </a>
           </li>
-          <li <?php echo ($sSection == 'groups') ? 'class="active"' : ''; ?>>
-            <a href="<?php echo $extra->generateUrl('admin', 'groups'); ?>">
-              <i class="material-icons">stars</i> Grupos
-            </a>
-          </li>
-
           <li>
             <div class="divider" style="opacity: 0.05;"></div>
           </li>
@@ -89,9 +83,9 @@ $pendingOrdersCount = loadClass('admin/order')->getPendingOrdersCount();
           <li>
             <div class="subheader">Tienda</div>
           </li>
-          <li <?php echo ($sSection == 'view.products') ? 'class="active"' : ''; ?>>
-            <a href="<?php echo $extra->generateUrl('admin', 'view.products'); ?>">
-              <i class="material-icons">shopping_bag</i> Productos
+          <li <?php echo ($sSection == 'view.jerseys') ? 'class="active"' : ''; ?>>
+            <a href="<?php echo $extra->generateUrl('admin', 'view.jerseys'); ?>">
+              <i class="material-icons">shopping_bag</i> Jerseys
             </a>
           </li>
           <li <?php echo ($sSection == 'view.orders') ? 'class="active"' : ''; ?>>
@@ -100,11 +94,6 @@ $pendingOrdersCount = loadClass('admin/order')->getPendingOrdersCount();
               <?php if ($pendingOrdersCount > 0): ?>
                 <span class="badge new white-text"><?php echo $pendingOrdersCount; ?></span>
               <?php endif; ?>
-            </a>
-          </li>
-          <li <?php echo ($sSection == 'top20') ? 'class="active"' : ''; ?>>
-            <a href="<?php echo $extra->generateUrl('admin', 'top20'); ?>">
-              <i class="material-icons">analytics</i> Reporte Top 20
             </a>
           </li>
         </ul>
