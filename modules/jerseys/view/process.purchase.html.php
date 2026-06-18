@@ -79,7 +79,7 @@ require Core::view('head', 'core');
         <div class="address-section mb-4">
           <div class="section-header d-flex align-items-center mb-3">
             <svg class="home-icon me-2" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M15 5L5 13V25H11V19H19V25H25V13L15 5Z" fill="#FF1493" stroke="#FF1493" stroke-width="2" />
+              <path d="M15 5L5 13V25H11V19H19V25H25V13L15 5Z" style="fill: var(--color-secondary); stroke: var(--color-scondary);" stroke-width="2" />
             </svg>
             <h2 class="section-title mb-0">DIRECCION DE ENVIO</h2>
           </div>
@@ -137,7 +137,7 @@ require Core::view('head', 'core');
             IR A PAGOS
             <svg class="arrow-icon ms-2" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="12" cy="12" r="10" fill="white" />
-              <path d="M10 8L14 12L10 16" stroke="#FF1493" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M10 8L14 12L10 16" style="fill: var(--color-secondary); stroke: var(--color-scondary);" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </button>
         </div>
@@ -182,7 +182,7 @@ require Core::view('head', 'core');
   /* Envío Gratis Box */
   .shipping-free-section {
     padding: 1rem;
-    background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, gray 100%);
     border-radius: 12px;
     color: white;
   }
@@ -244,17 +244,17 @@ require Core::view('head', 'core');
   }
 
   .selectable-method.selected .shipping-box {
-    border-color: #ff1493;
-    background: rgba(255, 20, 147, 0.05);
+    border-color: var(--color-primary);
+    /* background: rgba(255, 20, 147, 0.05); */
     transform: scale(1.02);
-    box-shadow: 0 4px 12px rgba(255, 20, 147, 0.2);
+    /* box-shadow: 0 4px 12px var(--color-primary); */
   }
 
   /* Formulario */
   .section-title {
     font-size: 1.25rem;
     font-weight: 700;
-    color: #ff1493;
+    color: var(--color-secondary);
   }
 
   .whatsapp-title {
@@ -269,7 +269,7 @@ require Core::view('head', 'core');
 
   /* Botón Pago */
   .btn-payment {
-    background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
+    background: var(--color-primary);
     color: white;
     font-size: 1.3rem;
     font-weight: 700;
@@ -281,7 +281,7 @@ require Core::view('head', 'core');
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 15px rgba(255, 20, 147, 0.3);
+    /* box-shadow: 0 4px 15px rgba(255, 20, 147, 0.3); */
   }
 
   @media (max-width: 576px) {

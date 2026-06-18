@@ -35,7 +35,7 @@ require Core::view('head', 'core');
   }
 
   .order-number .highlight {
-    color: #ff1493;
+    color: var(--color-secondary);
     font-weight: 700;
   }
 
@@ -46,7 +46,7 @@ require Core::view('head', 'core');
   }
 
   .customer-name strong {
-    color: #ff1493;
+    color: var(--color-secondary);
     font-weight: 700;
   }
 
@@ -111,7 +111,7 @@ require Core::view('head', 'core');
   .payment-title {
     font-size: 18px;
     font-weight: 700;
-    color: #ff1493;
+    color: var(--color-secondary);
     margin-bottom: 8px;
     letter-spacing: 0.5px;
   }
@@ -130,7 +130,7 @@ require Core::view('head', 'core');
   }
 
   .payment-option {
-    background: var(--color-dark)
+    background: var(--color-primary)
       /*linear-gradient(135deg, var(--color-dark) 0%, #e91e63 100%);*/
     ;
     border-radius: 24px;
@@ -300,7 +300,7 @@ require Core::view('head', 'core');
 
       <h3 class="payment-title">
         <div class="payment-icon-wrapper">
-          <svg width="28" height="28" viewBox="0 0 16 16" fill="#FF1493">
+          <svg width="28" height="28" viewBox="0 0 16 16" style="fill: var(--color-secondary);">
             <path d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1H1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
             <path
               d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V5zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2H3z" />
@@ -342,21 +342,6 @@ require Core::view('head', 'core');
           <div class="oxxo-logo-container">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-jIObLxBTYZrOH7tjyHzE4J2sDGQYOo1xelf3Xaq6WQ&s=10"
               alt="OXXO" class="oxxo-logo">
-          </div>
-        </div>
-      </a>
-
-      <!-- Bank Transfer -->
-      <a href="https://wa.me/<?= $config['num_phone'] ?>?text=Hola%20deseo%20pagar%20mi%20pedido%20N°1%20con%20Transferencia"
-        target="_blank">
-        <div class="payment-option">
-          <h4 class="payment-option-title">3. TRANSFERENCIA</h4>
-          <div class="transfer-icon-container">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-bank"
-              viewBox="0 0 16 16">
-              <path
-                d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485-.62H.5a.498.498 0 0 1-.485-.62l.5-2A.5.5 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89zM3.777 3h8.447L8 1zM2 6v7h1V6zm2 0v7h2.5V6zm3.5 0v7h1V6zm2 0v7H12V6zM13 6v7h1V6zm2-1V4H1v1zm-.39 9H1.39l-.25 1h13.72z" />
-            </svg>
           </div>
         </div>
       </a>
