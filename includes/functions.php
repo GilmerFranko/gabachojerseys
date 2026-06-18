@@ -118,7 +118,7 @@ function gourl($route, $params = null)
 
 
 /**
- * 
+ *
  */
 function escape($string, $connect = null)
 {
@@ -533,4 +533,43 @@ function getFiveDaysLater($plusDays = 5)
 
   // 5. Retornar el formato final: Lunes 08 de Diciembre
   return "$diaTraducido $numeroDia de $mesTraducido";
+}
+
+
+/**
+ * Adds an item to the shopping cart cookie
+ */
+function addToCart(int $productId): void
+{
+  $cart = isset($_COOKIE['shopping_cart']) ? json_decode($_COOKIE['shopping_cart'], true) : [];
+
+  $cart[] = $productId;
+
+  setcookie('shopping_cart', json_encode($cart), time() + (86400 * 30), "/");
+}
+
+/**
+ * Retrieves the cart contents
+ */
+function getCartContents(): array
+{
+  return isset($_COOKIE['shopping_cart']) ? json_decode($_COOKIE['shopping_cart'], true) : [];
+}
+
+/**
+ * Sets a pending payment ID for the checkout process
+ */
+function setPendingPayment(int $orderId): void
+{
+  $_SESSION['pending_order_id'] = $orderId;
+  setcookie('pending_order_id', $orderId, time() + 86400, "/");
+}
+
+/**
+ * Clears the payment session and cookies
+ */
+function clearPendingPayment(): void
+{
+  unset($_SESSION['pending_order_id']);
+  setcookie('pending_order_id', '', time() - 3600, "/");
 }

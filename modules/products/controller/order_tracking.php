@@ -27,6 +27,7 @@ if (isset($_GET['order_id']) && !empty($_GET['order_id']))
   {
     $msg[] = 'No se ha encontrado el pedido1.';
   }
+  // die(var_export($items, 1));
   if (!empty($msg))
   {
     setTI([$msg]);

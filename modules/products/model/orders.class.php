@@ -24,7 +24,7 @@ class Orders extends Model
   public function getOrderById($order_id)
   {
     $query = $this->db->query(
-      'SELECT * 
+      'SELECT *
         FROM `orders` AS o
         WHERE o.`id` = ' . (int)$order_id
     );
@@ -49,12 +49,10 @@ class Orders extends Model
   public function getItemsByOrderId($order_id)
   {
     $query = $this->db->query(
-      'SELECT *, oi.`id` AS `item_id`, p.`id` AS `product_id`, cv.`id` AS `variant_id`
+      'SELECT *, oi.`id` AS `item_id`, j.`id` AS `jersey_id`
         FROM `order_items` AS oi
-        INNER JOIN `products` AS p
-          ON oi.`product_id` = p.`id`
-        INNER JOIN `color_variants` as cv
-          ON oi.`variant_id` = cv.`id`
+        INNER JOIN `jerseys` AS j
+          ON oi.`product_id` = j.`id`
         WHERE oi.`order_id` = ' . (int)$order_id
     );
 
@@ -92,5 +90,25 @@ class Orders extends Model
   public function deleteOrderById($order_id)
   {
     return loadClass('core/db')->deleteRow('orders', $order_id);
+  }
+
+  /**
+   * Marca un pedido como pagado
+   *
+   * @param int $order_id Identificador del pedido
+   * @return bool True si se actualizó correctamente, false en caso contrario
+   */
+  public function markOrderPaid($order_id)
+  {
+    // Preparamos los datos a actualizar
+    $data = [
+      'order_status' => 'Paid'
+    ];
+
+    // Utilizamos smartInsert pasando el ID como condición para actualizar
+    // Ajusta 'orders' si el nombre de tu tabla es diferente
+    $result = loadClass('core/db')->smartInsert('orders', $data, ['id', (int)$order_id]);
+
+    return ($result == true);
   }
 }

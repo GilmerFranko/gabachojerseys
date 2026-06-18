@@ -44,7 +44,7 @@ RewriteCond %{HTTPS} off
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # B. EXCEPCIÓN CRÍTICA (ESTO EVITA EL ERROR 429)
-# Si el navegador pide un archivo que EXISTE (como .js, .css o imágenes), 
+# Si el navegador pide un archivo que EXISTE (como .js, .css o imágenes),
 # detiene las reglas aquí y lo entrega directamente sin despertar a PHP.
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
@@ -59,7 +59,8 @@ RewriteRule ^pedido/([^/]+)$ index.php?app=products&section=summary&order_id=$1 
 
 # Redirecciona para rastreo
 RewriteRule ^rastrear/([^/]+)$ index.php?app=products&section=order_tracking&order_id=$1 [NC,L,QSA]
-
+RewriteRule ^rastrear-pedido/aprobado/?$ index.php?app=products&section=order_status&status=aprobado [NC,L,QSA]
+RewriteRule ^rastrear-pedido/rechazado/?$ index.php?app=products&section=order_status&status=rechazado [NC,L,QSA]
 # ----------------------------------------------------------------------
 # 3. REGLAS GENERALES (Amigables)
 # ----------------------------------------------------------------------

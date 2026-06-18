@@ -10,6 +10,7 @@
  * @Description Resumen de la compra
  *
  */
+setPendingPayment($order['id']);
 require Core::view('head', 'core');
 
 ?>
@@ -335,7 +336,7 @@ require Core::view('head', 'core');
       </a>
 
       <!-- OXXO Payment -->
-      <a href="https://wa.me/<?= $config['num_phone'] ?>?text=Hola%20deseo%20pagar%20mi%20pedido%20N°1%20con%20OXXO"
+      <a href="<?= $config['card_pay_link'] ?>"
         target="_blank">
         <div class="payment-option">
           <h4 class="payment-option-title">2. DEPOSITO EN OXXO</h4>

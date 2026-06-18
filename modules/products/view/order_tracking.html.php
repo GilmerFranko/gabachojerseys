@@ -311,80 +311,80 @@ require Core::view('head', 'core');
   </div>
 
   <?php if (isset($order) && $order): ?>
-        <!-- Tarjeta de Estado Principal -->
-        <div class="status-card">
-          <div class="order-meta">
-            <div>
-              <div class="order-id">PEDIDO #<?= $order['id'] ?></div>
-              <div class="order-date">Realizado el <?= $order['created_at'] ?></div>
-            </div>
-            <div class="status-badge"><?= $class_order_status[$currentStatus]['text'] ?></div>
-          </div>
+    <?php
+    $num_model1 = $items[0]['jersey1_model'];
+    $img_jersey1 = 'jersey1_model' . $num_model1;
+    $num_model2 = $items[0]['jersey2_model'];
+    $img_jersey2 = 'jersey2_model' . $num_model2;
+    ?>
+    <!-- Tarjeta de Estado Principal -->
+    <div class="status-card">
+      <div class="order-meta">
+        <div>
+          <div class="order-id">PEDIDO #<?= $order['id'] ?></div>
+          <div class="order-date">Realizado el <?= $order['created_at'] ?></div>
+        </div>
+        <div class="status-badge"><?= $class_order_status[$currentStatus]['text'] ?></div>
+      </div>
 
-          <!-- Stepper Dinámico (4 pasos según backend) -->
-          <div class="stepper">
-            <div class="step <?= $cos['Pending'] ?>">
-              <div class="step-icon"><i class="fa fa-clock"></i></div>
-              <div class="step-label">PENDIENTE</div>
-            </div>
-            <div class="step <?= $cos['Paid'] ?>">
-              <div class="step-icon"><i class="fas fa-receipt"></i></div>
-              <div class="step-label">PAGADO</div>
-            </div>
-            <div class="step <?= $cos['Shipped'] ?>">
-              <div class="step-icon"><i class="fas fa-paper-plane"></i></div>
-              <div class="step-label">ENVIADO</div>
-            </div>
-          </div>
+      <!-- Stepper Dinámico (4 pasos según backend) -->
+      <div class="stepper">
+        <div class="step <?= $cos['Pending'] ?>">
+          <div class="step-icon"><i class="fa fa-clock"></i></div>
+          <div class="step-label">PENDIENTE</div>
+        </div>
+        <div class="step <?= $cos['Paid'] ?>">
+          <div class="step-icon"><i class="fas fa-receipt"></i></div>
+          <div class="step-label">PAGADO</div>
+        </div>
+        <div class="step <?= $cos['Shipped'] ?>">
+          <div class="step-icon"><i class="fas fa-paper-plane"></i></div>
+          <div class="step-label">ENVIADO</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Información del Pedido -->
+    <div class="details-section">
+      <div class="details-title">
+        <i class="fas fa-info-circle" style="color: var(--color-dark);"></i>
+        DETALLES DEL PEDIDO
+      </div>
+
+      <div class="info-box">
+        <div class="info-row">
+          <span class="info-label">Estatus Administrativo:</span>
+          <span class="info-value <?= $class_order_status[$currentStatus]['class'] ?>">
+            <?= $class_order_status[$currentStatus]['text'] ?>
+          </span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Total del pedido:</span>
+          <span class="info-value">$<?= number_format($order['total_amount'], 2) ?></span>
         </div>
 
-        <!-- Información del Pedido -->
-        <div class="details-section">
-          <div class="details-title">
-            <i class="fas fa-info-circle" style="color: var(--color-dark);"></i>
-            DETALLES DEL PEDIDO
-          </div>
-
-          <div class="info-box">
-            <div class="info-row">
-              <span class="info-label">Estatus Administrativo:</span>
-              <span class="info-value <?= $class_order_status[$currentStatus]['class'] ?>">
-                <?= $class_order_status[$currentStatus]['text'] ?>
-              </span>
+        <?php if (!empty($items)): ?>
+          <p class="info-label" style="margin-top: 15px; margin-bottom: 5px; font-weight: bold;">Artículos en este pedido:
+          </p>
+          <?php foreach ($items as $item): ?>
+            <div class="product-item">
+              <img src="<?= $config['products_url'] . $items[0][$img_jersey1] ?>" alt="" class="product-img">
+              <img src="<?= $config['products_url'] . $items[0][$img_jersey1] ?>" alt="" class="product-img">
+              <div style="flex: 1;">
+                <div class="info-label">Cantidad: <?= $item['quantity'] ?> | Precio:
+                  $<?= isset($item['sale_price']) ? number_format($item['sale_price'], 2) : number_format($item['original_price'], 2) ?>
+                </div>
+              </div>
             </div>
-            <div class="info-row">
-              <span class="info-label">Método de pago:</span>
-              <span class="info-value"><?= $arr_methot_payment[$order['payment_method']] ?? $order['payment_method'] ?></span>
-            </div>
-            <div class="info-row">
-              <span class="info-label">Total del pedido:</span>
-              <span class="info-value">$<?= number_format($order['total_amount'], 2) ?></span>
-            </div>
-
-            <?php if (!empty($items)): ?>
-                  <p class="info-label" style="margin-top: 15px; margin-bottom: 5px; font-weight: bold;">Artículos en este pedido:
-                  </p>
-                  <?php foreach ($items as $item): ?>
-                        <div class="product-item">
-                          <img
-                            src="<?= $item['image_url'] ? $config['products_url'] . $item['image_url'] : 'https://via.placeholder.com/60' ?>"
-                            alt="<?= $item['name'] ?>" class="product-img">
-                          <div style="flex: 1;">
-                            <div class="info-value" style="text-align: left;"><?= $item['name'] ?></div>
-                            <div class="info-label">Cantidad: <?= $item['quantity'] ?> | Precio:
-                              $<?= isset($item['sale_price']) ? number_format($item['sale_price'], 2) : number_format($item['original_price'], 2) ?>
-                            </div>
-                          </div>
-                        </div>
-                  <?php endforeach; ?>
-            <?php endif; ?>
-          </div>
-        </div>
+          <?php endforeach; ?>
+        <?php endif; ?>
+      </div>
+    </div>
   <?php elseif (isset($_GET['order_id'])): ?>
-        <!-- Mensaje si no se encuentra el pedido (opcional, el backend ya redirecciona pero por seguridad) -->
-        <p style="text-align: center; color: #666; margin-top: 20px;">El c&oacute;digo que indicaste no es v&aacute;ido,
-          cons&uacute;ltalo con tu asesor v&iacutea WhatsApp <span style="font-size: 1.5em; color: #e25555;">&hearts;</span>.
-        </p>
+    <!-- Mensaje si no se encuentra el pedido (opcional, el backend ya redirecciona pero por seguridad) -->
+    <p style="text-align: center; color: #666; margin-top: 20px;">El c&oacute;digo que indicaste no es v&aacute;ido,
+      cons&uacute;ltalo con tu asesor v&iacutea WhatsApp <span style="font-size: 1.5em; color: #e25555;">&hearts;</span>.
+    </p>
   <?php endif; ?>
 </div>
 
