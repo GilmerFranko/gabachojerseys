@@ -27,14 +27,14 @@ $jersey2_size_selected = $jersey2_size;
     <!-- Contenedor de Jerseys -->
     <div class="jerseys-preview">
       <div class="jersey-item">
-        <img src="<?= $config['products_url'] . $jersey2_model_selected ?>" alt="Jersey 1" class="jersey-img">
+        <img src="<?= $config['products_url'] . $jersey1_model_selected ?>" alt="Jersey 1" class="jersey-img">
         <div class="jersey-info">
           <strong>Jersey 1</strong>
           <span>Talla: <?= htmlspecialchars($jersey1_size) ?></span>
         </div>
       </div>
       <div class="jersey-item">
-        <img src="<?= $config['products_url'] . $jersey1_model_selected ?>" alt="Jersey 2" class="jersey-img">
+        <img src="<?= $config['products_url'] . $jersey2_model_selected ?>" alt="Jersey 2" class="jersey-img">
         <div class="jersey-info">
           <strong>Jersey 2</strong>
           <span>Talla: <?= htmlspecialchars($jersey2_size) ?></span>
@@ -51,7 +51,7 @@ $jersey2_size_selected = $jersey2_size;
     <!-- Pagos -->
     <div class="payment-section">
       <div class="payment-icons">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Visa_Inc._logo_%282005%E2%80%932014%29.png" alt="Visa">
         <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/Oxxo_Logo.svg" alt="OXXO">
       </div>

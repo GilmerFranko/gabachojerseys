@@ -274,19 +274,16 @@ require Core::view('head', 'core');
       <h2 class="order-number">Tu pedido es el <span
           class="highlight">#<?= isset($order['id']) ? $order['id'] : '---' ?></span></h2>
       <p class="customer-name">A nombre de:
-        <strong><?= isset($order['customer_name']) ? $order['customer_name'] : 'Cliente' ?></strong></p>
+        <strong><?= isset($order['customer_name']) ? $order['customer_name'] : 'Cliente' ?></strong>
+      </p>
     </div>
 
     <!-- Product Image -->
     <div class="product-showcase text-center mb-4">
-      <?php
-      $img = '';
-      if (!empty($items) && isset($items[0]['variant']['image'])) {
-        $img = $config['products_url'] . '/' . $items[0]['variant']['image'];
-      }
-      ?>
-      <img src="<?= $img ?: $config['static_url'] . '/images/logo/logo2/product.jpg' ?>"
-        alt="<?= $items[0]['variant']['color_name'] ?>" class="product-img" width="150">
+      <img src="<?= $config['products_url'] . '/' . $jersey1_model_selected ?>"
+        alt="" class="product-img" width="150">
+      <img src="<?= $config['products_url'] . '/' . $jersey2_model_selected ?>"
+        alt="" class="product-img" width="150">
     </div>
 
     <!-- Call to Action Button -->
@@ -323,15 +320,15 @@ require Core::view('head', 'core');
           <p class="payment-option-subtitle">CREDITO Y DEBITO</p>
           <div class="card-logos">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/1280px-Visa_Inc._logo.svg.png"
+              src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Visa_Inc._logo_%282005%E2%80%932014%29.png"
               alt="Visa" class="card-logo">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MasterCard_Logo.svg/2560px-MasterCard_Logo.svg.png"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MasterCard_Logo.svg/1280px-MasterCard_Logo.svg.png"
               alt="Mastercard" class="card-logo">
             <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Maestro_logo.png" alt="Maestro"
               class="card-logo">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/American_Express_logo.svg/1200px-American_Express_logo.svg.png"
+              src="https://upload.wikimedia.org/wikipedia/commons/f/fa/American_Express_logo_%282018%29.svg"
               alt="American Express" class="card-logo">
           </div>
         </div>
@@ -343,7 +340,7 @@ require Core::view('head', 'core');
         <div class="payment-option">
           <h4 class="payment-option-title">2. DEPOSITO EN OXXO</h4>
           <div class="oxxo-logo-container">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Oxxo_Logo.svg/1200px-Oxxo_Logo.svg.png"
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-jIObLxBTYZrOH7tjyHzE4J2sDGQYOo1xelf3Xaq6WQ&s=10"
               alt="OXXO" class="oxxo-logo">
           </div>
         </div>

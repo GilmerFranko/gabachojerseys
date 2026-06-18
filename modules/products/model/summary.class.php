@@ -30,17 +30,32 @@ class Summary extends Model
 
     $order = $order_rows['data'][0];
 
-    $items_rows = Core::model('db', 'core')->getRows('order_items', ['id', 'order_id', 'product_id', 'variant_id', 'size_hoodie_1', 'size_hoodie_2', 'quantity', 'price_at_purchase', 'subtotal'], ['order_id', $order_id], 0, 100);
+    $items_rows = Core::model('db', 'core')->getRows('order_items', ['id', 'order_id', 'product_id', 'jersey1_model', 'jersey1_size', 'jersey2_model', 'jersey2_size', 'quantity', 'price_at_purchase', 'subtotal'], ['order_id', $order_id], 0, 100);
     $items = [];
     if ($items_rows && isset($items_rows['data']))
     {
       foreach ($items_rows['data'] as $it)
       {
-        $product = Core::model('db', 'core')->getRows('products', ['id', 'name', 'original_price', 'sale_price'], ['id', $it['product_id']], 0, 1);
-        $variant = Core::model('db', 'core')->getRows('color_variants', ['id', 'image', 'color_name'], ['id', $it['variant_id']], 0, 1);
-
-        $it['product'] = ($product && isset($product['data'][0])) ? $product['data'][0] : [];
-        $it['variant'] = ($variant && isset($variant['data'][0])) ? $variant['data'][0] : [];
+        $jersey = Core::model('db', 'core')->getRows(
+          'jerseys',
+          [
+            'id',
+            'description',
+            'jersey1_model1',
+            'jersey1_model2',
+            'jersey1_model3',
+            'jersey1_sizes',
+            'jersey2_model1',
+            'jersey2_model2',
+            'jersey2_model3',
+            'jersey2_sizes',
+            'created_at'
+          ],
+          ['id', $it['product_id']],
+          0,
+          1
+        );
+        $it['product'] = ($jersey && isset($jersey['data'][0])) ? $jersey['data'][0] : [];
 
         $items[] = $it;
       }

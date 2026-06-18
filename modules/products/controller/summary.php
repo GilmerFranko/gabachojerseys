@@ -34,3 +34,8 @@ if (!$summary)
 
 $order = $summary['order'];
 $items = $summary['items'];
+
+$jersey1_model_selected = $items[0]['product']['jersey1_model' . $items[0]['jersey1_model']];
+$jersey2_model_selected = $items[0]['product']['jersey2_model' . $items[0]['jersey2_model']];
+
+// die(var_export($jersey1_model_selected, 1));
