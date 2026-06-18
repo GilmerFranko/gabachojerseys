@@ -125,7 +125,7 @@ require Core::view('head', 'core');
             <input type="text" name="customer_whatsapp" id="" class="form-control mx-3" style="flex: 1;">
           </div>
           <div class="form-field d-flex align-items-center">
-            <label class="form-label">Email</label>
+            <label class="form-label">Email <small>Se enviará a tu correo el N° de pedido</small></label>
             <input type="email" name="customer_email" id="customer_email" class="form-control mx-3" style="flex: 1;" required>
           </div>
         </div>
