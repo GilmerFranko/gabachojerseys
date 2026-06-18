@@ -372,7 +372,7 @@ require Core::view('head', 'core');
           <?php foreach ($items as $item): ?>
             <div class="product-item">
               <img src="<?= $config['products_url'] . $items[0][$img_jersey1] ?>" alt="" class="product-img">
-              <img src="<?= $config['products_url'] . $items[0][$img_jersey1] ?>" alt="" class="product-img">
+              <img src="<?= $config['products_url'] . $items[0][$img_jersey2] ?>" alt="" class="product-img">
               <div style="flex: 1;">
                 <div class="info-label">Cantidad: <?= $item['quantity'] ?> | Precio:
                   $<?= isset($item['sale_price']) ? number_format($item['sale_price'], 2) : number_format($item['original_price'], 2) ?>
