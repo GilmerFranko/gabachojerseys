@@ -18,8 +18,9 @@
 
         <label class="size-label">Selecciona tu talla:</label>
         <div class="size-grid">
-          <button type="button" class="size-btn" onclick="selectSize(this, 'jersey1', 'S')">S</button>
-          <button type="button" class="size-btn" onclick="selectSize(this, 'jersey1', 'M')">M</button>
+          <?php foreach ($jersey1_sizes as $size) : ?>
+            <button type="button" class="size-btn" onclick="selectSize(this, 'jersey1', '<?= $size ?>')"><?= $size ?></button>
+          <?php endforeach; ?>
         </div>
         <input type="hidden" name="jersey1_size" id="jersey1_size" value="">
         <input type="hidden" name="jersey1_model" id="jersey1_model" value="">
@@ -41,8 +42,9 @@
 
         <label class="size-label">Selecciona tu talla:</label>
         <div class="size-grid">
-          <button type="button" class="size-btn" onclick="selectSize(this, 'jersey2', 'S')">S</button>
-          <button type="button" class="size-btn" onclick="selectSize(this, 'jersey2', 'M')">M</button>
+          <?php foreach ($jersey2_sizes as $size) : ?>
+            <button type="button" class="size-btn" onclick="selectSize(this, 'jersey2', '<?= $size ?>')"><?= $size ?></button>
+          <?php endforeach; ?>
         </div>
         <input type="hidden" name="jersey2_size" id="jersey2_size" value="">
         <input type="hidden" name="jersey2_model" id="jersey2_model" value="">

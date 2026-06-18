@@ -26,8 +26,9 @@ if (!isset($jersey['id']))
   die("No hay producto registrado.");
 }
 
-$variants = loadClass('products/variants')->getProductVariants($jersey['id']);
-
 $reviews = loadClass('admin/reviews')->getAllReviews(20);
 
 $parser->parse($jersey['description']);
+
+$jersey1_sizes = explode(",", $jersey['jersey1_sizes']);
+$jersey2_sizes = explode(",", $jersey['jersey2_sizes']);
