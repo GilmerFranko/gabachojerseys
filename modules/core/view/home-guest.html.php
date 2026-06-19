@@ -17,7 +17,6 @@ require Core::view('head', 'core');
 require Core::view('menu', 'core');
 ?>
 
-
 <section class="first-section content" id="main">
 
 	<!-- Main Promo Banner -->
@@ -30,15 +29,82 @@ require Core::view('menu', 'core');
 		</div>
 	</div>
 
-	<?php //require Core::view('product.details', 'products');
+	<?php //require Core::view('product.details', 'products'); 
 	?>
 	<?php require Core::view('carousel-module', 'jerseys'); ?>
+
+	<!-- Contenedor moderno para la descripción del producto -->
+	<div class="container my-4">
+		<div class="product-description-card">
+			<div class="description-header">
+				<h5 class="description-title">Descripción</h5>
+			</div>
+			<div class="description-body">
+				<?= $jersey['description'] ?>
+			</div>
+		</div>
+	</div>
+
 	<?php require Core::view('product-module', 'jerseys'); ?>
 	<?php require Core::view('trend-module', 'jerseys'); ?>
 	<?php require Core::view('review-module', 'jerseys'); ?>
 </section>
 
+<style>
+	/* Contenedor principal de la descripción */
+	.product-description-card {
+		padding: 24px;
+		margin: 20px 0;
+	}
 
+	/* Cabecera del bloque de descripción */
+	.description-header {
+		padding-bottom: 12px;
+		margin-bottom: 18px;
+	}
+
+	/* Título de la descripción */
+	.description-title {
+		font-size: 1.35rem;
+		color: #1e293b;
+		/* Gris oscuro elegante */
+		font-weight: 700;
+		margin: 0;
+	}
+
+	/* Cuerpo del contenido (Soporta HTML dinámico) */
+	.description-body {
+		font-size: 1rem;
+		color: #475569;
+		/* Color de lectura suave */
+		font-weight: 400;
+	}
+
+	/* Estilos heredados para posibles etiquetas dentro de la descripción dinámica */
+	.description-body p {
+		margin-bottom: 15px;
+	}
+
+	.description-body p:last-child {
+		margin-bottom: 0;
+	}
+
+	.description-body strong {
+		color: #0f172a;
+		font-weight: 600;
+	}
+
+	/* Por si la descripción incluye listas */
+	.description-body ul,
+	.description-body ol {
+		padding-left: 20px;
+		margin-bottom: 15px;
+	}
+
+	.description-body li {
+		margin-bottom: 6px;
+	}
+</style>
 
 <!-- Script actualizado para validar tallas antes de enviar el formulario -->
 <script>
@@ -64,7 +130,6 @@ require Core::view('menu', 'core');
 		$('#purchaseForm').append(inputSize1, inputSize2);
 	});
 </script>
-
 
 <!-- FOOTER -->
 <?php require Core::view('footer', 'core'); ?>
