@@ -51,6 +51,10 @@ require Core::view('menu', 'core');
 </section>
 
 <style>
+	.product-description-card {
+		max-width: 480px;
+	}
+
 	/* Cabecera del bloque de descripción */
 	.description-header {
 		margin-bottom: 18px;
