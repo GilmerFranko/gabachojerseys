@@ -8,6 +8,7 @@
  *=======================================================
  */
 require Core::view('head', 'core');
+$reviewModel = loadClass('admin/reviews');
 ?>
 
 <style>
@@ -164,7 +165,7 @@ require Core::view('head', 'core');
               <td><?php echo htmlspecialchars($rev['comment']); ?></td>
               <td>
                 <?php if (!empty($rev['image_url'])): ?>
-                  <img src="<?php echo htmlspecialchars($rev['image_url']); ?>" alt="Producto" class="review-thumb">
+                  <img src="<?= $reviewModel->getImage($rev['image_url']); ?>" alt="Producto" class="review-thumb">
                 <?php else: ?>
                   <span class="grey-text" style="font-size: 0.8rem;">Sin Imagen</span>
                 <?php endif; ?>
@@ -172,6 +173,9 @@ require Core::view('head', 'core');
               <td class="grey-text" style="font-size: 0.9rem;"><?php echo $rev['created_at']; ?></td>
               <td>
                 <div class="action-btns">
+                  <a href="<?= gLink('admin/edit.review', ['review_id' => $rev['id']]) ?>" class="btn-action btn-edit tooltipped" data-position="top" data-tooltip="Editar">
+                    <i class="material-icons">edit</i>
+                  </a>
                   <!-- Botón Eliminar -->
                   <a href="<?= gLink('admin/delete.review', ['review_id' => $rev['id']]) ?>"
                     class="btn-action btn-delete tooltipped" data-position="top" data-tooltip="Eliminar"
@@ -200,9 +204,6 @@ require Core::view('head', 'core');
     </a>
   </div>
 </section>
-
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script type="text/javascript" src="<?php echo $config['base_url']; ?>/static/js/admin.js"></script>
 
 <script>

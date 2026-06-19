@@ -58,7 +58,28 @@ class Reviews extends Model
    */
   public function deleteReview($id)
   {
+    // Optiene imagen
+    $review = $this->getReviewById($id);
+    if ($review && !empty($review['image_url']))
+    {
+      $this->deleteImage($review['image_url']);
+    }
     return loadClass('core/db')->deleteRow('reviews', $id);
+  }
+
+  /**
+   * Elimina una imagen vieja del servidor cuando se actualiza un campo
+   *
+   * @param string $image_url
+   */
+  public function deleteImage($image_url)
+  {
+    global $config;
+
+    if (!empty($image_url))
+    {
+      loadClass('core/extra')->deleteImage($image_url, $config['products_path']);
+    }
   }
 
   /**
@@ -74,17 +95,18 @@ class Reviews extends Model
    */
   public function updateReview($id, $data)
   {
-    return loadClass('core/db')->smartUpdate('reviews', $id, $data);
+    // die(var_export($data, true));
+    return loadClass('core/db')->smartInsert('reviews', $data, ['id', $id]);
   }
 
   public function getImage($review)
   {
     global $config;
 
-    if (!empty($review['image_url']))
+    if (!empty($review))
     {
-      return $config['products_url'] . '/' . $review['image_url'];
+      return $config['products_url'] . '/' . $review;
     }
-    return Core::config('assets_url') . '/img/default-review.png';
+    return $config['images_url'] . 'default-thread-photo.png';
   }
 }
