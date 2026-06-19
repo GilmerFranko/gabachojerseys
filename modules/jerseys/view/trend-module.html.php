@@ -1,37 +1,15 @@
 <?php
-// Validamos si la variable $now existe y qué formato tiene (objeto DateTime, string o timestamp)
-if (isset($now))
-{
-  if ($now instanceof DateTime)
-  {
-    $semilla_hora = $now->format('YmdH');
-  }
-  elseif (is_numeric($now))
-  {
-    $semilla_hora = date('YmdH', $now);
-  }
-  else
-  {
-    $semilla_hora = date('YmdH', strtotime($now));
-  }
-}
-else
-{
-  $semilla_hora = date('YmdH'); // Respaldo si $now no está definida
-}
+$semilla_hora = date('YmdH');
 
-// 1. Sembramos el generador con la hora actual para que el número sea único por hora
+// 1. Sembra el generador con la hora actual para que el número sea único por hora
 mt_srand((int)$semilla_hora);
-$vendidos_por_hora = mt_rand(15, 38); // Rango de ventas (puedes cambiar el 15 y 38)
-
-// 2. Reseteamos la semilla de PHP para no romper otros elementos aleatorios de tu web
+$vendidos_por_hora = mt_rand(201, 820); // Rango de ventas (puedes cambiar el 15 y 38)
+$semilla_minuto = date('YmdHi');
+mt_srand((int)$semilla_minuto);
+// 3. Genera el número online inicial entre 20 y 50
+$online_inicial = mt_rand(760, 980);
+// Resetea la semilla de PHP para no romper otros elementos aleatorios de tu web
 mt_srand();
-
-// 3. Generamos el número online inicial entre 20 y 50
-$online_inicial = mt_rand(20, 50);
-
-if ($online_inicial < 20)  $online_inicial += 10;
-
 ?>
 
 <style>
@@ -123,8 +101,8 @@ if ($online_inicial < 20)  $online_inicial += 10;
     currentViewers += change;
 
     // Forzamos estrictamente el rango entre 20 y 50
-    if (currentViewers < 20) currentViewers = 20;
-    if (currentViewers > 50) currentViewers = 50;
+    if (currentViewers < 760) currentViewers = 760;
+    if (currentViewers > 980) currentViewers = 980;
 
     document.getElementById('viewers-count').innerText = currentViewers;
   }
