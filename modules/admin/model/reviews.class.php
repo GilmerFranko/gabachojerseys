@@ -68,4 +68,23 @@ class Reviews extends Model
   {
     return loadClass('core/db')->smartInsert('reviews', $data);
   }
+
+  /**
+   * Actualiza una reseña existente por su ID
+   */
+  public function updateReview($id, $data)
+  {
+    return loadClass('core/db')->smartUpdate('reviews', $id, $data);
+  }
+
+  public function getImage($review)
+  {
+    global $config;
+
+    if (!empty($review['image_url']))
+    {
+      return $config['products_url'] . '/' . $review['image_url'];
+    }
+    return Core::config('assets_url') . '/img/default-review.png';
+  }
 }

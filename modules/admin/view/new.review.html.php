@@ -68,10 +68,6 @@ require Core::view('head', 'core');
               <input class="file-path validate" type="text" placeholder="Seleccionar imagen local">
             </div>
           </div>
-          <div class="input-field col s12 m6">
-            <input id="image_url" name="image_url" type="text">
-            <label for="image_url">O ingresar URL de Imagen externa</label>
-          </div>
         </div>
       </div>
     </div>
