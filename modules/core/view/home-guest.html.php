@@ -32,7 +32,7 @@ require Core::view('menu', 'core');
 	<?php //require Core::view('product.details', 'products'); 
 	?>
 	<?php require Core::view('carousel-module', 'jerseys'); ?>
-
+	<?php require Core::view('trend-module', 'jerseys'); ?>
 	<!-- Contenedor moderno para la descripción del producto -->
 	<div class="container my-4">
 		<div class="product-description-card">
@@ -46,7 +46,6 @@ require Core::view('menu', 'core');
 	</div>
 
 	<?php require Core::view('product-module', 'jerseys'); ?>
-	<?php require Core::view('trend-module', 'jerseys'); ?>
 	<?php require Core::view('review-module', 'jerseys'); ?>
 </section>
 

@@ -15,8 +15,9 @@
 
 body {
   background-color: white;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
   min-height: 100vh;
   padding-bottom: 80px;
 }
@@ -95,7 +96,7 @@ header {
 
 .banner-image {
   width: 100%;
-  height: 200px;
+  height: auto;
   object-fit: fill;
   display: block;
 }
@@ -346,7 +347,9 @@ header {
   text-decoration: none;
   border-radius: 4px; /* Borde redondeado */
   background-color: none !important; /* Fondo púrpura claro */
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 .pagination li a:hover {
