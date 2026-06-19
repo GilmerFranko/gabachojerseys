@@ -1,6 +1,6 @@
 <?php
 $carousels = loadClass('jerseys/carousels')->getAllCarousels();
-if (!$carousels === false or (is_array($carousels) and count($carousels) == 0))
+if (is_array($carousels) && count($carousels) > 0)
 {
   $carousel_images = [];
   foreach ($carousels as $carousel)
