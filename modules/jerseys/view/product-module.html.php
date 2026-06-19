@@ -54,6 +54,7 @@
 
       <button type="submit" class="submit-btn">Finalizar Compra</button>
     </form>
+    <?php require Core::view('payment.notice-module', 'jerseys') ?>
   </div>
 </div>
 
@@ -62,7 +63,7 @@
     background: #ffffff;
     border-radius: 12px;
     padding: 20px;
-    border: 1px solid #e5e7eb;
+    /* border: 1px solid #e5e7eb; */
     max-width: 500px;
     font-family: sans-serif;
   }

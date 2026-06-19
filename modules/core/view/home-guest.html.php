@@ -34,7 +34,6 @@ require Core::view('menu', 'core');
 	?>
 
 	<?php require Core::view('product-module', 'jerseys'); ?>
-	<?php require Core::view('delivery-module', 'jerseys'); ?>
 	<?php require Core::view('trend-module', 'jerseys'); ?>
 	<?php require Core::view('review-module', 'jerseys'); ?>
 </section>

@@ -1,9 +1,7 @@
 <style>
   .envio-card {
     background: #ffffff;
-    border-radius: 12px;
     padding: 24px;
-    border: 1px solid #e5e7eb;
     max-width: 500px;
   }
 
