@@ -34,12 +34,10 @@ if (is_array($carousels) && count($carousels) > 0)
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: #f8fafc;
     }
 
     .carousel-image {
-      width: 100%;
-      height: 256px;
+      width: 300px;
       object-fit: cover;
       user-select: none;
       pointer-events: auto;
