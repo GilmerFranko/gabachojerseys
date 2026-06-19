@@ -100,6 +100,6 @@
     </svg>
   </div>
   <p class="shipping-text">
-    <strong>Envío estándar a todo México</strong> (12–18 días hábiles)
+    <strong>Recibe el día 06 de Julio con DHL</strong>
   </p>
 </div>
