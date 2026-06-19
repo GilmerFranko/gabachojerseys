@@ -90,15 +90,16 @@ header {
 /* Promo Banner */
 .promo-banner {
   position: relative;
-  border-radius: 20px;
-  overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 .banner-image {
   width: 100%;
+  max-width: 400px;
   height: auto;
-  object-fit: fill;
   display: block;
+  border-radius: 20px;
 }
 
 .banner-edit {
