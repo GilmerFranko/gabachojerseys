@@ -26,6 +26,12 @@ if ($config['debug_mode'] == 1): ?>
 
 <?php // No mostrar en admin
 if ($sModule != 'admin'): ?>
+	<!-- Estructura del modal Lightbox -->
+	<div id="customLightbox" class="lightbox-overlay" onclick="closeLightbox()">
+		<button class="lightbox-close" onclick="event.stopPropagation(); closeLightbox();">&times;</button>
+		<img id="lightboxImg" class="lightbox-image" src="" alt="Imagen ampliada" onclick="event.stopPropagation();" />
+	</div>
+
 	<footer class="page-footer center" style="margin-bottom: 30px; padding: 5px 0">
 		<!-- Bottom Navigation para Usuarios -->
 		<nav class="bottom-nav">

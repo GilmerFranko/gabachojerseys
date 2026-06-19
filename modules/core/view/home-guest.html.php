@@ -33,8 +33,9 @@ require Core::view('menu', 'core');
 	?>
 	<?php require Core::view('carousel-module', 'jerseys'); ?>
 	<?php require Core::view('trend-module', 'jerseys'); ?>
+
 	<!-- Contenedor moderno para la descripción del producto -->
-	<div class="container my-4">
+	<div class="container my-4" style="padding: 0 20px	;">
 		<div class="product-description-card">
 			<div class="description-header">
 				<h5 class="description-title">Descripción</h5>
@@ -50,21 +51,14 @@ require Core::view('menu', 'core');
 </section>
 
 <style>
-	/* Contenedor principal de la descripción */
-	.product-description-card {
-		padding: 24px;
-		margin: 20px 0;
-	}
-
 	/* Cabecera del bloque de descripción */
 	.description-header {
-		padding-bottom: 12px;
 		margin-bottom: 18px;
 	}
 
 	/* Título de la descripción */
 	.description-title {
-		font-size: 1.35rem;
+		font-size: 1rem;
 		color: #1e293b;
 		/* Gris oscuro elegante */
 		font-weight: 700;
@@ -73,10 +67,13 @@ require Core::view('menu', 'core');
 
 	/* Cuerpo del contenido (Soporta HTML dinámico) */
 	.description-body {
-		font-size: 1rem;
-		color: #475569;
+		line-height: 1;
+		font-size: 0.8rem;
+		color: #374151;
 		/* Color de lectura suave */
-		font-weight: 400;
+		font-weight: 200;
+		background: #fdfdfd;
+		border-radius: 8px;
 	}
 
 	/* Estilos heredados para posibles etiquetas dentro de la descripción dinámica */

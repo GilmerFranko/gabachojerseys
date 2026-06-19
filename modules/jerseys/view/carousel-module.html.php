@@ -196,12 +196,6 @@ if (is_array($carousels) && count($carousels) > 0)
 
   </div>
 
-  <!-- Estructura del modal Lightbox -->
-  <div id="customLightbox" class="lightbox-overlay" onclick="closeLightbox()">
-    <button class="lightbox-close" onclick="event.stopPropagation(); closeLightbox();">&times;</button>
-    <img id="lightboxImg" class="lightbox-image" src="" alt="Imagen ampliada" onclick="event.stopPropagation();" />
-  </div>
-
   <!-- Carga del archivo JavaScript de Swiper.js -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
@@ -227,29 +221,6 @@ if (is_array($carousels) && count($carousels) > 0)
         effect: "slide",
         speed: 600
       });
-    });
-
-    // Funciones globales para abrir y cerrar la imagen ampliada
-    function openLightbox(src) {
-      const lightbox = document.getElementById('customLightbox');
-      const lightboxImg = document.getElementById('lightboxImg');
-
-      lightboxImg.src = src;
-      lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden'; // Previene el scroll del fondo
-    }
-
-    function closeLightbox() {
-      const lightbox = document.getElementById('customLightbox');
-      lightbox.classList.remove('active');
-      document.body.style.overflow = ''; // Devuelve el scroll del fondo
-    }
-
-    // Cerrar también al presionar la tecla Escape
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        closeLightbox();
-      }
     });
   </script>
 <?php } ?>
