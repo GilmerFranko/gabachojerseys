@@ -24,14 +24,6 @@
 
           <div class="review-body">
             <div class="user-name"><?= htmlspecialchars($r['customer_name'] ?? '') ?></div>
-            <div class="date">
-              <?php
-              if (is_numeric($r['created_at'])) echo date('d/m/Y', $r['created_at']);
-              elseif (strtotime($r['created_at']) !== false) echo date('d/m/Y', strtotime($r['created_at']));
-              else echo htmlspecialchars($r['created_at'] ?? '');
-              ?>
-            </div>
-
             <div class="stars-rating">
               <?php
               $rating = intval($r['rating'] ?? 5);

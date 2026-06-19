@@ -3,7 +3,7 @@
     <form id="purchaseForm" action="<?= gLink('jerseys/process.purchase') ?>" method="GET">
       <input type="hidden" name="jersey_id" value="<?= $jersey['id'] ?>">
       <div class="jersey-section">
-        <h2 class="section-title">Jersey 1</h2>
+        <h2 class="section-title">Selecciona Jersey 1</h2>
         <div class="gallery">
           <div class="image-option-wrapper" onclick="selectImage('jersey1', 1)">
             <img id="jersey1-img1" src="<?= $config['products_url'] . $jersey['jersey1_model1'] ?>" class="image-option">
@@ -16,7 +16,7 @@
           </div>
         </div>
 
-        <label class="size-label">Selecciona tu talla:</label>
+        <label class="size-label">Selecciona tu talla Jersey 1:</label>
         <div class="size-grid">
           <?php foreach ($jersey1_sizes as $size) : ?>
             <button type="button" class="size-btn" onclick="selectSize(this, 'jersey1', '<?= $size ?>')"><?= $size ?></button>
@@ -27,7 +27,7 @@
       </div>
 
       <div class="jersey-section">
-        <h2 class="section-title">Jersey 2</h2>
+        <h2 class="section-title">Selecciona Jersey 2</h2>
         <div class="gallery">
           <div class="image-option-wrapper" onclick="selectImage('jersey2', 1)">
             <img id="jersey2-img1" src="<?= $config['products_url'] . $jersey['jersey2_model1'] ?>" class="image-option">
@@ -40,7 +40,7 @@
           </div>
         </div>
 
-        <label class="size-label">Selecciona tu talla:</label>
+        <label class="size-label">Selecciona tu talla Jersey 2:</label>
         <div class="size-grid">
           <?php foreach ($jersey2_sizes as $size) : ?>
             <button type="button" class="size-btn" onclick="selectSize(this, 'jersey2', '<?= $size ?>')"><?= $size ?></button>
@@ -94,8 +94,8 @@
   }
 
   .image-option {
-    width: 60px;
-    height: 60px;
+    width: 85px;
+    height: 85px;
     object-fit: cover;
     border-radius: 8px;
     border: 2px solid #e5e7eb;

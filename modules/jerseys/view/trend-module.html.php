@@ -28,7 +28,7 @@ mt_srand();
     gap: 8px;
     font-weight: 600;
     font-size: 14px;
-    margin-bottom: 12px;
+    margin: 4px 0;
     color: #1f2937;
   }
 
@@ -73,13 +73,68 @@ mt_srand();
     align-items: center;
     gap: 8px;
   }
+
+  /* Icono de camión azul responsivo */
+  .shipping-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .shipping-icon-wrapper svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: #2563eb;
+    /* Color azul característico de tu imagen */
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .shipping-text {
+    font-size: 14px;
+    color: #64748b;
+    /* Color gris para el texto secundario */
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .shipping-text strong {
+    color: #0f172a;
+    /* El texto principal va en un color casi negro destacado */
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  .shipping-box {
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
 </style>
 
 <div class="demand-card">
   <div class="trending-header">
-    <span class="dot pulse"></span> 🔥 En Tendencia Ahora — Alta Demanda esta Semana
+    <span class="dot pulse"></span> 🔥 En Tendencia Ahora
   </div>
+  <div class="trending-header">
+    <span class="dot pulse"></span>
+    <!-- <div class="shipping-icon-wrapper"> -->
+    <!-- Icono SVG de camión limpio -->
+    <!-- <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="3" width="15" height="13" rx="2" ry="2" />
+        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
+        <circle cx="5.5" cy="18.5" r="2.5" />
+        <circle cx="18.5" cy="18.5" r="2.5" />
+      </svg>
+    </div> -->
+    🚚 Recibe el día 06 de Julio con DHL
 
+  </div>
   <div class="stat-row">
     <span class="dot status-green"></span>
     <strong id="viewers-count"><?php echo $online_inicial; ?></strong> personas viendo ahora
