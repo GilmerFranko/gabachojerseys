@@ -41,7 +41,7 @@ if (isset($_POST['save']))
   if (empty($_POST['original_price'])) $msg[] = 'El precio original no puede estar vacío.';
 
   // 2. Limpieza de variables
-  $j_description    = cleanString($_POST['description'] ?? '');
+  $j_description    = escape($_POST['description'] ?? '');
   $j_jersey1_sizes  = cleanString($_POST['jersey1_sizes'] ?? '');
   $j_jersey2_sizes  = cleanString($_POST['jersey2_sizes'] ?? '');
   $j_sale_price     = cleanString($_POST['sale_price'] ?? '');

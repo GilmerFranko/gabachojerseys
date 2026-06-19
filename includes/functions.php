@@ -283,9 +283,8 @@ function tobr($string)
 
 function nl2br2($string)
 {
-
+  $string = str_replace(array('\r\n', '\n', '\r'), "\n", $string);
   $string = str_replace(array("\r\n", "\r", "\n"), "<br>", $string);
-
   return $string;
 }
 

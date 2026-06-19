@@ -1,5 +1,6 @@
 <?php defined('BORDAMEX') || exit;
 require Core::view('head', 'core');
+$jersey['description'] = str_replace(array('\r\n', '\n', '\r'), "\n", $jersey['description']);
 ?>
 
 <style>

@@ -40,7 +40,7 @@ require Core::view('menu', 'core');
 				<h5 class="description-title">Descripción</h5>
 			</div>
 			<div class="description-body">
-				<?= $jersey['description'] ?>
+				<?= nl2br2($jersey['description']) ?>
 			</div>
 		</div>
 	</div>
