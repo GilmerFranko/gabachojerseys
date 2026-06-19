@@ -584,3 +584,25 @@ function isValidEmail(string $email): bool
   // filter_var devuelve el email si es válido, o false si no lo es
   return (bool)filter_var($email, FILTER_VALIDATE_EMAIL);
 }
+
+
+function getAllRows($db, $table)
+{
+  $query = $db->query(
+    'SELECT *
+       FROM `' . $table . '`
+       ORDER BY `created_at` DESC'
+  );
+
+  if ($query && $query->num_rows > 0)
+  {
+    $rows = [];
+    while ($row = $query->fetch_assoc())
+    {
+      $rows[] = $row;
+    }
+    return $rows;
+  }
+
+  return false;
+}

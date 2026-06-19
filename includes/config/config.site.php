@@ -35,6 +35,9 @@ $config['threads_url']  = $config['base_url']  . '/filestore/uploads/threads/';
 $config['products_path'] = $config['base_path'] . 'filestore' . DS . 'uploads' . DS . 'products';
 $config['products_url']  = $config['base_url']  . '/filestore/uploads/products/';
 
+// Carpeta donde se alojan las imagenes del carrusel
+$config['carousel_path'] = $config['base_path'] . 'filestore' . DS . 'uploads' . DS . 'carousel';
+$config['carousel_url']  = $config['base_url']  . '/filestore/uploads/carousel/';
 
 // Carpeta donde se alojan los archivos con correos
 $config['bulkemails_path']   = $config['base_path'] . 'filestore' . DS . 'uploads' . DS . 'bulkemails';

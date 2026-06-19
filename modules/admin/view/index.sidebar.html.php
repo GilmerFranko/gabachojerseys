@@ -93,6 +93,11 @@ $pendingOrdersCount = loadClass('admin/order')->getPendingOrdersCount();
               <i class="material-icons">rate_review</i> Reseñas
             </a>
           </li>
+          <li <?php echo ($sSection == 'view.carousel') ? 'class="active"' : ''; ?>>
+            <a href="<?php echo $extra->generateUrl('admin', 'view.carousel'); ?>">
+              <i class="material-icons">photo_library</i> Carrusel
+            </a>
+          </li>
           <li <?php echo ($sSection == 'view.orders') ? 'class="active"' : ''; ?>>
             <a href="<?php echo $extra->generateUrl('admin', 'view.orders'); ?>">
               <i class="material-icons">receipt_long</i> Pedidos
