@@ -531,7 +531,7 @@ function getFiveDaysLater($plusDays = 5)
   $mesTraducido = $meses[$nombreMesIngles];
 
   // 5. Retornar el formato final: Lunes 08 de Diciembre
-  return "$diaTraducido $numeroDia de $mesTraducido";
+  return "$numeroDia de $mesTraducido";
 }
 
 

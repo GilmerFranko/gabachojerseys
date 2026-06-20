@@ -132,8 +132,7 @@ mt_srand();
         <circle cx="18.5" cy="18.5" r="2.5" />
       </svg>
     </div> -->
-    🚚 Recibe el día 06 de Julio con DHL
-
+    🚚 Recibe el día <?= getFiveDaysLater(3) ?> con DHL
   </div>
   <div class="stat-row">
     <span class="dot status-green"></span>

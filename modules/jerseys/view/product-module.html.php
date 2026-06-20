@@ -52,9 +52,16 @@
 
       <hr>
 
-      <button type="submit" class="submit-btn">Finalizar Compra</button>
+      <button type="submit" class="submit-btn">Realizar Compra</button>
     </form>
     <?php require Core::view('payment.notice-module', 'jerseys') ?>
+    <div class="container my-3">
+      <div class="promo-banner">
+        <a href="https://wa.me/<?= $config['num_phone'] ?>?text=Hola,%20quiero%20comprar%20mayoreo" target="_blank">
+          <img src="<?= $config['images_url'] . '/' . 'compra-mayoreo.jpeg' ?>" alt="compra-mayoreo" class="banner-image">
+        </a>
+      </div>
+    </div>
   </div>
 </div>
 
