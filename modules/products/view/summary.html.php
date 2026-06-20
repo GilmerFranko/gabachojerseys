@@ -293,7 +293,7 @@ require Core::view('head', 'core');
       <!--<span class="alert-icon">🚨</span>
         <span class="alert-text">¡¡Alerta!! ¡ÚLTIMAS PIEZAS DISPONIBLES!</span>
         <span class="alert-icon">✓</span>-->
-      <img src="<?= $config['images_url'] . '/alerta-ultimas-piezas-disponibles.png' ?>"
+      <img src="<?= $config['images_url'] . '/alerta-reailza-tu-pago-ahora.png' ?>"
         alt="Ultimas piezas disponibles">
     </div>
     <!-- Payment Method Selection Header -->
