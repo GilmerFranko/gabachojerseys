@@ -101,8 +101,8 @@
   }
 
   .image-option {
-    width: 85px;
-    height: 85px;
+    width: 95px;
+    height: 95px;
     object-fit: cover;
     border-radius: 8px;
     border: 2px solid #e5e7eb;
