@@ -60,13 +60,13 @@ require Core::view('head', 'core');
             <div class="delivery-logo selectable-method flex-fill" data-method="DHL">
               <div class="shipping-box">
                 <img src="<?= $config['images_url'] . '/dhl.png' ?>" alt="DHL">
-                <span class="delivery-arrival-text">Recibe el: <?= getFiveDaysLater(5) ?></span>
+                <span class="delivery-arrival-text">Recibe el: <?= getFiveDaysLater(3) ?></span>
               </div>
             </div>
             <div class="delivery-logo selectable-method flex-fill" data-method="Estafeta">
               <div class="shipping-box">
                 <img src="<?= $config['images_url'] . '/estafeta.png' ?>" alt="Estafeta">
-                <span class="delivery-arrival-text">Recibe el: <?= getFiveDaysLater(7) ?></span>
+                <span class="delivery-arrival-text">Recibe el: <?= getFiveDaysLater(4) ?></span>
               </div>
             </div>
           </div>
