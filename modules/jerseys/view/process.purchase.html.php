@@ -325,21 +325,66 @@ require Core::view('head', 'core');
 
   // Función que se llama al dar click en el botón "IR A PAGOS"
   function handlePayment() {
-    event.preventDefault(); // Detener el envío automático
+    event.preventDefault(); // Detener el envío automático para validar
 
+    // 1. Obtener los valores de los campos
     var shippingMethod = $('#selected_shipping_method').val();
-    var form = $('form')[0]; // Obtener el formulario principal
+    var customerName = $.trim($('input[name="customer_name"]').val());
+    var address = $.trim($('input[name="shipping_address"]').val());
+    var state = $.trim($('input[name="shipping_state"]').val());
+    var city = $.trim($('input[name="shipping_city"]').val());
+    var whatsapp = $.trim($('input[name="customer_whatsapp"]').val());
+    var email = $.trim($('#customer_email').val());
 
-    // Validación básica de campos requeridos y método de envío
+    // Expresiones regulares para validar Email y WhatsApp
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var whatsappRegex = /^[0-9]{10,15}$/; // Solo números, entre 10 y 15 dígitos
+
+    // 2. Validar Método de Envío
     if (!shippingMethod) {
+      showAlert("Por favor, selecciona una paquetería preferida.", ".delivery-section");
       $('#shipping-error').fadeIn();
-      $('html, body').animate({
-        scrollTop: $(".delivery-section").offset().top - 100
-      }, 500);
       return false;
     }
 
-    // Si todo está bien, enviar el formulario
-    form.submit();
+    // 3. Validar Datos de Dirección
+    if (customerName === "") {
+      showAlert("Por favor, ingresa tu nombre completo.", 'input[name="customer_name"]');
+      return false;
+    }
+    if (address === "") {
+      showAlert("Por favor, ingresa tu dirección completa.", 'input[name="shipping_address"]');
+      return false;
+    }
+    if (state === "") {
+      showAlert("Por favor, indica tu estado.", 'input[name="shipping_state"]');
+      return false;
+    }
+    if (city === "") {
+      showAlert("Por favor, indica tu ciudad o municipio.", 'input[name="shipping_city"]');
+      return false;
+    }
+
+    // 4. Validar WhatsApp y Email
+    if (!whatsappRegex.test(whatsapp)) {
+      showAlert("Por favor, ingresa un número de WhatsApp válido (solo números, mínimo 10 dígitos).", 'input[name="customer_whatsapp"]');
+      return false;
+    }
+    if (!emailRegex.test(email)) {
+      showAlert("Por favor, ingresa un correo electrónico válido.", '#customer_email');
+      return false;
+    }
+
+    // Si pasa todas las validaciones, enviar el formulario principal
+    $('form')[0].submit();
+  }
+
+  // Función auxiliar para hacer scroll y enfocar/alertar el campo con error
+  function showAlert(mensaje, elemento) {
+    alert(mensaje); // Puedes cambiar este 'alert' nativo por un SweetAlert2 o un texto en el HTML
+    $('html, body').animate({
+      scrollTop: $(elemento).offset().top - 120
+    }, 400);
+    $(elemento).focus();
   }
 </script>
