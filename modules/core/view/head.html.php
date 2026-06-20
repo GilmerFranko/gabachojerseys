@@ -16,7 +16,8 @@
 <html lang="es" style="overflow-x: hidden">
 
 <head>
-	<?php if ($sModule != 'admin' and $sModule != 'mod') { ?>
+	<?php if ($sModule != 'admin' and $sModule != 'mod')
+	{ ?>
 		<!-- Google tag (gtag.js) -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-DGY33MBNWW"></script>
 		<script>
@@ -36,7 +37,16 @@
 		content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="description"
-		content="Tienda online de bordados. En nuestra tienda puedes encontrar una gran variedad de sweters bordados de alta calidad, con diseños exclusivos y materiales de primera clase. Envíos nacional a todo Mexico.">
+		content="Tienda online de Jerseys.">
+
+	<!-- Pixel Meta y Analytics-->
+	<?php
+	if (!isset($_ENV['DEVELOPMENT']) || $_ENV['DEVELOPMENT'] !== 'true')
+	{
+		require Core::view('pixel', 'site');
+		require Core::view('analytics', 'site');
+	}
+	?>
 
 	<!-- Carga JS dependiendo del modulo -->
 	<?php if ($sModule == 'admin'): ?>
@@ -108,7 +118,8 @@
 		};
 	</script>
 
-	<?php if ($session->platform == 'android' || $session->platform == 'app') { ?>
+	<?php if ($session->platform == 'android' || $session->platform == 'app')
+	{ ?>
 
 		<style>
 			nav a.left,
@@ -131,7 +142,8 @@
 <body>
 
 	<?php
-	if ($session->is_member and $sModule == 'admin') {
+	if ($session->is_member and $sModule == 'admin')
+	{
 		require Core::view('sidenav', 'core');
 	}
 	?>
@@ -153,9 +165,9 @@
 	</div>
 
 	<script>
-		$(document).ready(function () {
+		$(document).ready(function() {
 			// Escucha el evento de clic en las imágenes con el atributo data-bs-toggle="modal"
-			$('img[data-bs-toggle="modal"]').on('click', function () {
+			$('img[data-bs-toggle="modal"]').on('click', function() {
 				// Obtiene el src de la imagen que fue clickeada
 				var imageSrc = $(this).attr('src');
 
