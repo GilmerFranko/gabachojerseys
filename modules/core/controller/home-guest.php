@@ -26,7 +26,7 @@ if (!isset($jersey['id']))
   die("No hay producto registrado.");
 }
 
-$reviews = loadClass('admin/reviews')->getAllReviews(20);
+$reviews = loadClass('admin/reviews')->getAllReviews(10000);
 
 $parser->parse($jersey['description']);
 
